@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Florian Lecorvaisier">
+<meta name="dcterms.date" content="2023-02-01">
+
+<title>Summary stats - Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Summary stats</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../qmd-files/index.html">
+ <span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../qmd-files/x001-to-get-started.html">
+ <span class="menu-text">To get started</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../qmd-files/x002-data.html" aria-current="page">
+ <span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../qmd-files/x003-analyzes.html">
+ <span class="menu-text">Analyzes</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-figures--code" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Figures &amp; Code</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-figures--code">    
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-world-map-isolates.html">
+ <span class="dropdown-text">World map isolates</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-number-isolates-country.html">
+ <span class="dropdown-text">Number isolates country</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-number-isolates-year.html">
+ <span class="dropdown-text">Number isolates year</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-number-isolates-country-year.html">
+ <span class="dropdown-text">Number isolates country-year</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-us-map-isolates.html">
+ <span class="dropdown-text">US map isolates</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-number-isolates-state-year.html">
+ <span class="dropdown-text">Number isolates state-year</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-proportion-isolates-us-year.html">
+ <span class="dropdown-text">Proportion isolates US</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-density-state.html">
+ <span class="dropdown-text">Density by state</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-us-map-stations.html">
+ <span class="dropdown-text">US map stations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-link-temp.html">
+ <span class="dropdown-text">Relation temperatures</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../qmd-files/figures/fig-temperature-state.html">
+ <span class="dropdown-text">Temperature by state</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-lefrancq-data-set" id="toc-the-lefrancq-data-set" class="nav-link active" data-scroll-target="#the-lefrancq-data-set">The Lefrancq data set</a></li>
+  <li><a href="#the-variables" id="toc-the-variables" class="nav-link" data-scroll-target="#the-variables">The variables</a>
+  <ul class="collapse">
+  <li><a href="#the-density-data" id="toc-the-density-data" class="nav-link" data-scroll-target="#the-density-data">The density data</a></li>
+  <li><a href="#the-temperature-data" id="toc-the-temperature-data" class="nav-link" data-scroll-target="#the-temperature-data">The temperature data</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Florian Lecorvaisier </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 1, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<section id="the-lefrancq-data-set" class="level1">
+<h1>The Lefrancq data set</h1>
+<p>The data I use for my analysis has been published in Lefrancq et al.&nbsp;(2022). The dataset was originally published in <code>.xlsx</code> format. I manually cleaned it and converted to the <code>.txt</code> format to simplify its use. After that, I still had some cleaning/filtering to do using R directly.</p>
+<p>The first step was obviously to load the data set into R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_lefrancq <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/data-lefrancq-2022.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The map below shows the geographical distribution of the isolates. We can see that most countries with isolates come from North American or European countries.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-48-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>The data set consists in 3344 isolates, gathered from 24 between 1935 and 2019. Now, there is an enormous heterogeneity between countries regarding the number of isolates provided to the data set, as shown below.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-52-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>We can see that the two dominant countries, the United States (US) and France (FR), represent together 73.8 % of all the isolates. Thus, most countries in the data set cannot be studied the way we plan as there is too few data.</p>
+<p>There also is a high heterogeneity in the period of isolation, as shown below.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-56-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>We can observe that most of the isolates (79.75) %) have been sampled after 2010. This means that our analyzes will have to be lead on short time spans (hardly more than two decades, or even less depending on the analysis).</p>
+<p>The figure below summarizes the data shown in the two previous figures.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-60-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>We decided to focus on the isolates coming from the United States for three reasons:</p>
+<ul>
+<li>an important part of the isolates come from this country;</li>
+<li>the origin of the isolates is given at the sub-national level (state), which will be useful for the analysis;</li>
+<li>variables needed for the analysis are easy to access in the United States.</li>
+</ul>
+<p>We isolate the american strains this way:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_lefrancq <span class="ot">&lt;-</span> data_lefrancq[data_lefrancq<span class="sc">$</span>country <span class="sc">==</span> <span class="st">"US"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, the data set has been reduced to 1457 isolates gathered between 1935 and 2019. From there, we decided to lead an analysis on the temporal spread of PRN-deficient strains. PRN, or pertactin, is a surface protein found in most <em>Bordetella pertussis</em> strains. As an antigen, it is part of most of the ACellular Vaccines (ACV) used against pertussis. These vaccines create selective pressures thought to favorize strains lacking PRN, called PRN-deficient or PRN- strains (opposed to PRN-producing or PRN+ strains).</p>
+<p>The dataset had thus to be filtered to only keep records from which we dispose of three information:</p>
+<ul>
+<li>The PRN+ or PRN- status of the isolate;</li>
+<li>The year of isolation;</li>
+<li>The state of isolation (used to make fine-scale analysis).</li>
+</ul>
+<p>This filtering is simply done by removing rows lacking at least one of these information.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_lefrancq <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(data_lefrancq[, <span class="fu">c</span>(<span class="st">"year_isolated"</span>, <span class="st">"region"</span>, <span class="st">"prn_def"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This filtering reduces our data set to 1367 rows. We only need to keep the data starting from the year of the first occurrence of a PRN- in the United States which is the year 2007.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_lefrancq <span class="ot">&lt;-</span> data_lefrancq[data_lefrancq<span class="sc">$</span>year_isolated <span class="sc">&gt;=</span> <span class="fu">min</span>(data_lefrancq<span class="sc">$</span>year_isolated[data_lefrancq<span class="sc">$</span>prn_def <span class="sc">==</span> <span class="st">"-"</span>]), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From there, we have our final data set, composed of 1302 rows. In the data set, we have the state of origin of our isolates. This will be useful in our analyzes, but before we can proceed we must do some formatting: we must convert the full-length names of the states to their postal code. This is needed to assure that everything matches in the future analyzes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_lefrancq)[<span class="fu">grep</span>(<span class="st">"region"</span>, <span class="fu">colnames</span>(data_lefrancq))] <span class="ot">&lt;-</span> <span class="st">"state"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_lefrancq)[<span class="fu">grep</span>(<span class="st">"year_isolated"</span>, <span class="fu">colnames</span>(data_lefrancq))] <span class="ot">&lt;-</span> <span class="st">"year"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data_lefrancq<span class="sc">$</span>state[data_lefrancq<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"New York State"</span>] <span class="ot">&lt;-</span> <span class="st">"New York"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data_lefrancq<span class="sc">$</span>state[data_lefrancq<span class="sc">$</span>state <span class="sc">==</span> <span class="st">"Washington State"</span>] <span class="ot">&lt;-</span> <span class="st">"Washington"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>states_names <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/states-names.txt"</span>, <span class="at">h =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (name <span class="cf">in</span> states_names<span class="sc">$</span>long) {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  data_lefrancq<span class="sc">$</span>state[data_lefrancq<span class="sc">$</span>state <span class="sc">==</span> name] <span class="ot">&lt;-</span> states_names<span class="sc">$</span>short[states_names<span class="sc">$</span>long <span class="sc">==</span> name]</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We may now save the “cleaned” data set into a new file. This will be useful for later use and to save us from reformatting the original file each time we need it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We write the file</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(data_lefrancq, <span class="at">file =</span> <span class="st">"data/data-prn.txt"</span>, <span class="at">quote =</span> F, <span class="at">row.names =</span> F, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We read it</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>data_prn <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/data-prn.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>[Create table here?]</p>
+<p>The figure below shows which states have been sampled for <em>B. pertussis</em> isolates. We see that there are no isolates coming from a few states. Note that because a state has not been sampled does not mean the state did not reported pertussis cases. The reasons of this heterogeneity in the distribution of the isolates is not known. We can also see that a few states did report some isolates, but only before the period that our study focuses on.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-64-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>As mentioned earlier, our analysis of the American data set will rely on the availability of a lower level of geographical distribution of the isolates, which is their state of origin. We also said that we will focus in a first time on the spread of PRN- strains. The figure below shows the distribution of the isolates per state and per year, as well as the proportion of PRN- isolates, in the final data set.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-68-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>Ultimately, what will interest us is to explain the increased frequency of PRN- isolates in the United States during the period 2007 to 2019, regardless of the state of origin. The information about the state of origin will only be kept in the calculation of the variables values. In the figure below, we can see how the proportion of PRN- isolates changes with time.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-72-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+</section>
+<section id="the-variables" class="level1">
+<h1>The variables</h1>
+<p>Our first interest was to check if different variables could help to understand the structure of our data. These variables were meant to be included in a sort of GLM, as described in the “GLM” page.</p>
+<section id="the-density-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-density-data">The density data</h2>
+<p>The first variable we wanted to introduce in the model is the population density. To obtain the population density at the state scale for each year, two variables are needed: the population size of the state each year, and the state area.</p>
+<p>For the population size, surveys are conducted every 10 years and available on the website of the <a href="https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/population-change-data-table.pdf">United States Census Bureau</a> (last accessed on 01/11/2023). To intrapolate the population sizes between two surveys, a simple method consists in considering that the population grows linearly between two surveys. Thus, we have:</p>
+<p><span class="math display">\[
+P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\right)}{10}\times y
+\]</span> with <span class="math inline">\(P_j\left(x\right)\)</span> the population in the state <span class="math inline">\(j\)</span> for the decade <span class="math inline">\(x\)</span> and <span class="math inline">\(y\in\left(1, 2, ..., 9\right)\)</span> the year in the decade for which we want to calculate the population size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data_census <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/census-us.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(x <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">2020</span>)) { <span class="co"># We only need this time range</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(y <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    val <span class="ot">=</span> (data_census[data_census<span class="sc">$</span>year <span class="sc">==</span> x, <span class="st">"pop"</span>] <span class="sc">-</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>             data_census[data_census<span class="sc">$</span>year <span class="sc">==</span> x <span class="sc">-</span> <span class="dv">10</span>, <span class="st">"pop"</span>]) <span class="sc">/</span> <span class="dv">10</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    data_census <span class="ot">=</span> <span class="fu">rbind</span>(data_census, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                        <span class="fu">data.frame</span>(<span class="at">year =</span> x <span class="sc">-</span> <span class="dv">10</span> <span class="sc">+</span> y,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">state =</span> data_census<span class="sc">$</span>state[data_census<span class="sc">$</span>year <span class="sc">==</span> x],</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">pop =</span> data_census<span class="sc">$</span>pop[data_census<span class="sc">$</span>year <span class="sc">==</span> x <span class="sc">-</span> <span class="dv">10</span>] <span class="sc">+</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                                     val <span class="sc">*</span> y))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The land area of each state is also available on the website of the <a href="https://www.census.gov/geographies/reference-files/2010/geo/state-area.html">United States Census Bureau</a> (last accessed on 11/01/2023). These data date back from 2010 but I believe it is safe to assume the geography of the U.S. has not changed much since this period.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_area <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/area-us.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is now possible to calculate the population densities for each state and each year.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_density <span class="ot">=</span> <span class="fu">cbind</span>(data_census, <span class="at">area =</span> <span class="dv">0</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> data_area<span class="sc">$</span>state) {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  data_density<span class="sc">$</span>area[data_density<span class="sc">$</span>state <span class="sc">==</span> x] <span class="ot">&lt;-</span> data_area<span class="sc">$</span>area[data_area<span class="sc">$</span>state <span class="sc">==</span> x]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>data_density<span class="sc">$</span>density <span class="ot">=</span> data_density<span class="sc">$</span>pop <span class="sc">/</span> data_density<span class="sc">$</span>area</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We change states names with abreviations</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (state <span class="cf">in</span> data_density<span class="sc">$</span>state) {</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  data_density<span class="sc">$</span>state[data_density<span class="sc">$</span>state <span class="sc">==</span> state] <span class="ot">&lt;-</span> states_names<span class="sc">$</span>short[states_names<span class="sc">$</span>long <span class="sc">==</span> state]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># With these two lines, I keep only density from years and states in the range of interest, and order the output.</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>data_density <span class="ot">&lt;-</span> data_density[data_density<span class="sc">$</span>state <span class="sc">%in%</span> data_prn<span class="sc">$</span>state</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                              <span class="sc">&amp;</span> data_density<span class="sc">$</span>year <span class="sc">%in%</span> <span class="dv">2007</span><span class="sc">:</span><span class="dv">2019</span>, ]</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>data_density <span class="ot">&lt;-</span> data_density[<span class="fu">order</span>(data_density<span class="sc">$</span>year, data_density<span class="sc">$</span>state), ]</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Keeping the data set in a file for later use</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>data_density <span class="ot">&lt;-</span> data_density[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">5</span>)]</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>data_density <span class="ot">&lt;-</span> data_density[<span class="fu">order</span>(data_density<span class="sc">$</span>state, data_density<span class="sc">$</span>year), ]</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(data_density, <span class="at">file =</span> <span class="st">"data/dens-us.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> F, <span class="at">row.names =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Below, we can see the density curves of the annual population density for each state included in the Lefrancq data set, for the period 2007-2019.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-76-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>We can see that there is a good variability in the population density between states, while the variability intra-state (i.e., inter-annual) is pretty low. This is expected: during the 13 years studied, there is no major event justifying a profound change in population density for any state (as far as I am aware).</p>
+<p>As a variable in the model, I use a weighted mean of the population density, <span class="math inline">\(\delta_k^i\)</span>, calculated using the following formula:</p>
+<p><span class="math display">\[
+\delta_k^i=\frac{\sum_{j=1}^sn_{j,k-1}^iD_{j,k-1}+\delta_{k-1}^i}{\sum_{j=1}^sn_{j,k-1}^i+1}\forall k&gt;0
+\]</span></p>
+<p>where <span class="math inline">\(n_{j,k}^i\)</span> is the number of isolates of type <span class="math inline">\(i\)</span> (with <span class="math inline">\(i\in\left(1,2\right)\)</span>, <span class="math inline">\(1\)</span> meaning PRN- and <span class="math inline">\(2\)</span> meaning PRN+) recovered in state number <span class="math inline">\(j\)</span> at year <span class="math inline">\(k\)</span>, and <span class="math inline">\(D_{j,k}\)</span> is the density of state number <span class="math inline">\(k\)</span>. The term <span class="math inline">\(\delta_{k-1}^i\)</span> in the numerator, compensated by the term <span class="math inline">\(+1\)</span> in the denominator, is used to assure that even if we have no isolate <span class="math inline">\(i\)</span> one year the denominator is not equal to <span class="math inline">\(0\)</span>. We pose <span class="math inline">\(\delta_0^i=0\)</span>.</p>
+<p>The code chunk below calculates the values of <span class="math inline">\(\delta_k^1\)</span> and <span class="math inline">\(\delta_k^2\)</span> and stores them in two vectors, <code>delta1</code> and <code>delta2</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>table_prn <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">with</span>(data_prn, <span class="fu">table</span>(year, state, prn_def)))[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>table_prn<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(table_prn<span class="sc">$</span>year))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>table_prn<span class="sc">$</span>density <span class="ot">&lt;-</span> data_density<span class="sc">$</span>density</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>k_years <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(table_prn<span class="sc">$</span>year), <span class="fu">max</span>(table_prn<span class="sc">$</span>year))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>delta1 <span class="ot">=</span> delta2 <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(table_prn<span class="sc">$</span>year))) {</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  delta1 <span class="ot">=</span> <span class="fu">c</span>(delta1, <span class="fu">with</span>(table_prn[table_prn<span class="sc">$</span>year <span class="sc">==</span> k_years[k <span class="sc">-</span> <span class="dv">1</span>]</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">&amp;</span> table_prn<span class="sc">$</span>prn_def <span class="sc">==</span> <span class="st">"-"</span>, ], </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>     (<span class="fu">sum</span>(Freq <span class="sc">*</span> density) <span class="sc">+</span> delta1[k <span class="sc">-</span> <span class="dv">1</span>]) <span class="sc">/</span> (<span class="fu">sum</span>(Freq) <span class="sc">+</span> <span class="dv">1</span>)))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  delta2 <span class="ot">=</span> <span class="fu">c</span>(delta2, <span class="fu">with</span>(table_prn[table_prn<span class="sc">$</span>year <span class="sc">==</span> k_years[k <span class="sc">-</span> <span class="dv">1</span>]</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">&amp;</span> table_prn<span class="sc">$</span>prn_def <span class="sc">==</span> <span class="st">"+"</span>, ], </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>     (<span class="fu">sum</span>(Freq <span class="sc">*</span> density) <span class="sc">+</span> delta2[k <span class="sc">-</span> <span class="dv">1</span>]) <span class="sc">/</span> (<span class="fu">sum</span>(Freq) <span class="sc">+</span> <span class="dv">1</span>)))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The table below shows the values of <span class="math inline">\(\delta_k^1\)</span> and <span class="math inline">\(\delta_k^2\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\delta_k^1\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\delta_k^2\)</span></th>
+<th style="text-align: right;">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">38.12419</td>
+<td style="text-align: right;">33.55982</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">38.12419</td>
+<td style="text-align: right;">129.14558</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">73.68722</td>
+<td style="text-align: right;">113.03163</td>
+<td style="text-align: right;">2010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">65.74836</td>
+<td style="text-align: right;">52.42812</td>
+<td style="text-align: right;">2011</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">65.90083</td>
+<td style="text-align: right;">69.77140</td>
+<td style="text-align: right;">2012</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">55.03409</td>
+<td style="text-align: right;">42.52095</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">60.99292</td>
+<td style="text-align: right;">73.76657</td>
+<td style="text-align: right;">2014</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">74.35616</td>
+<td style="text-align: right;">27.39589</td>
+<td style="text-align: right;">2015</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">55.20182</td>
+<td style="text-align: right;">97.57169</td>
+<td style="text-align: right;">2016</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">55.87201</td>
+<td style="text-align: right;">66.99030</td>
+<td style="text-align: right;">2017</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">65.93721</td>
+<td style="text-align: right;">27.25318</td>
+<td style="text-align: right;">2018</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">74.41435</td>
+<td style="text-align: right;">68.50887</td>
+<td style="text-align: right;">2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The values are not used in this form as variables. What I used is the difference between <span class="math inline">\(\delta_k^1\)</span> and <span class="math inline">\(\delta_k^2\)</span> (called <span class="math inline">\(\Delta_k^D\)</span>) and the mean value between <span class="math inline">\(\delta_k^1\)</span> and <span class="math inline">\(\delta_k^2\)</span> (called <span class="math inline">\(\mu_k^D\)</span>):</p>
+<p><span class="math display">\[
+\begin{align}
+  &amp; \Delta_k^D=\delta_k^1-\delta_k^2 \\
+  &amp; \mu_k^D=\frac{\delta_k^1+\delta_k^2}{2}
+\end{align}
+\]</span></p>
+<p>The code to obtain the vectors of these two variables is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Delta_D <span class="ot">=</span> delta1 <span class="sc">-</span> delta2</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mu_D <span class="ot">=</span> (delta1 <span class="sc">+</span> delta2) <span class="sc">/</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The values of these two vectors are shown in the table below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\Delta_k^D\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\mu_k^D\)</span></th>
+<th style="text-align: right;">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.00000</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.564363</td>
+<td style="text-align: right;">35.84201</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-91.021393</td>
+<td style="text-align: right;">83.63488</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-39.344411</td>
+<td style="text-align: right;">93.35942</td>
+<td style="text-align: right;">2010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13.320239</td>
+<td style="text-align: right;">59.08824</td>
+<td style="text-align: right;">2011</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-3.870576</td>
+<td style="text-align: right;">67.83612</td>
+<td style="text-align: right;">2012</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12.513145</td>
+<td style="text-align: right;">48.77752</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-12.773653</td>
+<td style="text-align: right;">67.37974</td>
+<td style="text-align: right;">2014</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46.960271</td>
+<td style="text-align: right;">50.87603</td>
+<td style="text-align: right;">2015</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-42.369871</td>
+<td style="text-align: right;">76.38675</td>
+<td style="text-align: right;">2016</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-11.118289</td>
+<td style="text-align: right;">61.43116</td>
+<td style="text-align: right;">2017</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">38.684023</td>
+<td style="text-align: right;">46.59519</td>
+<td style="text-align: right;">2018</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.905484</td>
+<td style="text-align: right;">71.46161</td>
+<td style="text-align: right;">2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="the-temperature-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-temperature-data">The temperature data</h2>
+<p>To access quality temperature data from the United States was way harder than to access density data. The reference in the United States to retrieve climate data is the <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily">Global Historical Climatology Network daily (GHCNd) website</a> (last accessed on 13/01/2023). Their data is directly available through an HTTPS portal, thus making it easy to automatically download interesting data. Note though that too much requests on the servers will cause the connection to the server to shut down.</p>
+<p>The first step is to download a file available on the server containing the metadata of the meteorological stations from the network. The file is available <a href="https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt">here</a> (last accessed on 18/01/2023). For commodity, we save the file on our local drive instead of downloading it each time we need it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>list_stations <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">"data/ghcnd-stations.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The problem with the file is that it is oddly written: fields are not separated by a consistent character, but written in a way such that the values of a field are perfectly aligned along all the lines. This would not be a problem if all values for a field were the same length, but it is not the case. For example, the station name can have a few or many letters, so a variable number of spaces will separate this field from the next one. Because of that, it is necessary to create a new, cleaned file. Not that because <code>list_stations</code> is a big data frame ( rows), creating the cleaned version takes time. It is thus better to save the new data frame in a file and to load this file for later uses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_stations <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">id    =</span> <span class="fu">character</span>(<span class="fu">length</span>(list_stations)), </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">lat   =</span> <span class="fu">character</span>(<span class="fu">length</span>(list_stations)),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">lon   =</span> <span class="fu">character</span>(<span class="fu">length</span>(list_stations)), </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">alt   =</span> <span class="fu">character</span>(<span class="fu">length</span>(list_stations)), </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">state =</span> <span class="fu">character</span>(<span class="fu">length</span>(list_stations)))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"id</span><span class="sc">\t</span><span class="st">lat</span><span class="sc">\t</span><span class="st">lon</span><span class="sc">\t</span><span class="st">alt</span><span class="sc">\t</span><span class="st">state</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">file =</span> <span class="st">"data/ghcnd-stations-cleaned.txt"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(list_stations)) {</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  xx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">id    =</span> <span class="fu">substr</span>(list_stations[x], <span class="dv">1</span>, <span class="dv">11</span>),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">lat   =</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(list_stations[x], <span class="dv">13</span>, <span class="dv">20</span>)),</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">lon   =</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(list_stations[x], <span class="dv">22</span>, <span class="dv">30</span>)),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">alt   =</span> <span class="fu">as.numeric</span>(<span class="fu">substr</span>(list_stations[x], <span class="dv">32</span>, <span class="dv">37</span>)),</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">state =</span> <span class="fu">substr</span>(list_stations[x], <span class="dv">39</span>, <span class="dv">40</span>))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">paste</span>(xx), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">file =</span> <span class="st">"data/ghcnd-stations-cleaned.txt"</span>, <span class="at">append =</span> T)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">file =</span> <span class="st">"data/ghcnd-stations-cleaned.txt"</span>, <span class="at">append =</span> T)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At this point, we have a list of meteorological stations, with their coordinates and a bunch of other information available. There is no interest in keeping all these stations, so we will apply a list of filters to only keep the stations that may be useful. The variable of interest is the average daily temperature, which will later be converted to a state-based average annual temperature.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>list_stations <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/ghcnd-stations-cleaned.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>On the 122047 included in the network, not all are located in the United States. Fortunately, is is easy to filter only the stations from the US.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>list_stations <span class="ot">&lt;-</span> list_stations[<span class="fu">grep</span>(<span class="st">"US"</span>, list_stations<span class="sc">$</span>id), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we only need to keep the stations from states included in the PRN data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>list_stations <span class="ot">&lt;-</span> list_stations[list_stations<span class="sc">$</span>state <span class="sc">%in%</span> <span class="fu">unique</span>(data_prn<span class="sc">$</span>state), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From there it gets a little more technical. Not all stations from the network record the same meteorological variables, and not all stations were in activity during the same period. The “perfect” variable for our study would be “TAVG”, which represents the average temperature recorded each day. The problem is that this variable is not available in any station in some states included in our study. For this reason, we will use another variable, “TMEAN”, which will be calculated as the mean value between “TMIN” (the minimum temperature recorded one day) and “TMAX” (the maximum temperature recorded one day).</p>
+<p>To now which station was active during the period of interest and recorded the variables of interest (TMIN and TMAX), we need another file from the GHCNd website, available <a href="https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-inventory.txt">here</a> (last accessed on 18/01/2023).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>inventory <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/ghcnd-inventory.txt"</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"lat"</span>, <span class="st">"lon"</span>, <span class="st">"var"</span>, <span class="st">"start"</span>, <span class="st">"end"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now use this file to filter <code>list_stations</code> to only keep informative stations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>list_stations <span class="ot">&lt;-</span> list_stations[list_stations<span class="sc">$</span>id <span class="sc">%in%</span> inventory<span class="sc">$</span>id[inventory<span class="sc">$</span>var     <span class="sc">==</span> <span class="st">"TMAX"</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                                                                  <span class="sc">&amp;</span> inventory<span class="sc">$</span>start <span class="sc">&lt;=</span> <span class="dv">2007</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                                                                  <span class="sc">&amp;</span> inventory<span class="sc">$</span>end   <span class="sc">&gt;=</span> <span class="dv">2019</span>], ]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>list_stations <span class="ot">&lt;-</span> list_stations[list_stations<span class="sc">$</span>id <span class="sc">%in%</span> inventory<span class="sc">$</span>id[inventory<span class="sc">$</span>var     <span class="sc">==</span> <span class="st">"TMIN"</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                                                                  <span class="sc">&amp;</span> inventory<span class="sc">$</span>start <span class="sc">&lt;=</span> <span class="dv">2007</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                                                                  <span class="sc">&amp;</span> inventory<span class="sc">$</span>end   <span class="sc">&gt;=</span> <span class="dv">2019</span>], ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the end, there are 4152 stations kept. The map below shows the geographical distribution of the stations used in the study. We can see that the stations are nicely distributed among and within the states, thus we have a good depiction of the average temperature for each state in the study.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-80-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>Now that we have a list of the stations of interest, we download the files corresponding to the data recorded for each of these stations. I have explored several ways to download these data, but below is what I believe is the more practical way among those I tested.</p>
+<p>Note that downloading all the files is highly time-consuming and should be done only once. It is also possible that during some periods the servers are in maintenance and thus the data cannot be downloaded.</p>
+<p>The first step is to define the time range from which we want to download the data. By doing so we reduce the size of the downloaded files. The starting and ending times must be given under the “YYYY-MM-DD” format. Note that even if a station did not record data from some times in the wanting time range, it will still be downloaded anyway Below is a list of examples of stations included or not.</p>
+<ul>
+<li><p>If a station did not record data in June 2011 but downloaded data during the rest of the time range, it will still be downloaded.</p></li>
+<li><p>If a station stopped recording data in February 2019 it will be downloaded.</p></li>
+<li><p>If it stopped in 2019 it will not be downloaded, as the station would have been filtered out in the previous parts of this document.</p></li>
+</ul>
+<p>Below is the code to setup the starting and ending times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">min</span>(table_prn<span class="sc">$</span>year), <span class="st">"-01-01"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>end   <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">max</span>(table_prn<span class="sc">$</span>year), <span class="st">"-12-31"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now it is possible to download the stations data by directly connecting to the server hosting them. But before, let’s define a variable which will keep track of the advancement of the download. Thus, if it crashes part way, the code will not start downloading all the stations from the beginning.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ndl <span class="ot">=</span> <span class="fu">length</span>(<span class="fu">list.files</span>(<span class="st">"data/temperature-us-ghcnd-tmaxtmin/"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can download the files.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (ndl <span class="sc">!=</span> <span class="fu">length</span>(list_stations<span class="sc">$</span>id)) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">=</span> ndl</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (id <span class="cf">in</span> list_stations<span class="sc">$</span>id[(ndl <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">length</span>(list_stations<span class="sc">$</span>id)]) {</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"https://www.ncei.noaa.gov/access/services/data/v1?dataset=daily-summaries&amp;startDate="</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                  start, </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"&amp;endDate="</span>, </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                  end, </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"&amp;stations="</span>, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                  id, </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"&amp;format=csv"</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> data[, <span class="fu">c</span>(<span class="st">"STATION"</span>, <span class="st">"DATE"</span>, <span class="st">"TAVG"</span>, <span class="st">"TMAX"</span>, <span class="st">"TMIN"</span>)]</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write.table</span>(data, <span class="fu">paste0</span>(<span class="st">"data/temperature-us-ghcnd-tmaxtmin/"</span>, id, <span class="st">".txt"</span>), </span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">quote =</span> F, <span class="at">row.names =</span> F, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">=</span> x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(x)</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="fu">print</span>(<span class="st">"All stations already downloaded!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once downloaded, the data set is comprised of 4152 files with a variable number of rows (most of them have between 4,000 and 5,000 rows, data not shown). Since we only need the temperature data per year and per state, we summarize the data from the files into one unique file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"state</span><span class="sc">\t</span><span class="st">year</span><span class="sc">\t</span><span class="st">temp</span><span class="sc">\t</span><span class="st">temp_avg</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">file =</span> <span class="st">"data/temp-us.txt"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>list_of_files <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (state <span class="cf">in</span> <span class="fu">unique</span>(list_stations<span class="sc">$</span>state)) {</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  list_of_files[[state]] <span class="ot">&lt;-</span> list_stations<span class="sc">$</span>id[list_stations<span class="sc">$</span>state <span class="sc">==</span> state]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (state <span class="cf">in</span> <span class="fu">sort</span>(<span class="fu">unique</span>(list_stations<span class="sc">$</span>state))) {</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  yy <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">tmean =</span> <span class="fu">numeric</span>(), <span class="at">tavg =</span> <span class="fu">numeric</span>(), <span class="at">year =</span> <span class="fu">numeric</span>())</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"STATION</span><span class="sc">\t</span><span class="st">DATE</span><span class="sc">\t</span><span class="st">TAVG</span><span class="sc">\t</span><span class="st">TMAX</span><span class="sc">\t</span><span class="st">TMIN</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">file =</span> tmp)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (station <span class="cf">in</span> list_of_files[[state]]) {</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    xx <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="fu">paste0</span>(<span class="st">"data/temperature-us-ghcnd-tmaxtmin/"</span>, station, <span class="st">".txt"</span>),</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write.table</span>(xx, <span class="at">file =</span> tmp, <span class="at">append =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">quote =</span> F, </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">row.names =</span> F, <span class="at">col.names =</span> F)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>  xx <span class="ot">&lt;-</span> <span class="fu">read.table</span>(tmp, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(xx) <span class="sc">!=</span> <span class="dv">0</span>) { <span class="co"># For an unknown reason some files are empty</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># To remove or not aberrant values?</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># xx$TMAX[xx$TMAX &gt; 500 | xx$TMAX &lt; -500] &lt;- NA</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># xx$TMIN[xx$TMIN &gt; 500 | xx$TMIN &lt; -500] &lt;- NA</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># xx$TAVG[xx$TAVG &gt; 500 | xx$TAVG &lt; -500] &lt;- NA</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    year <span class="ot">=</span> <span class="fu">substr</span>(xx<span class="sc">$</span>DATE, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    tmean <span class="ot">=</span> (xx<span class="sc">$</span>TMAX <span class="sc">+</span> xx<span class="sc">$</span>TMIN) <span class="sc">/</span> <span class="dv">20</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    tavg <span class="ot">=</span> xx<span class="sc">$</span>TAVG <span class="sc">/</span> <span class="dv">10</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>    xx <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">state =</span> state, </span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>                     <span class="at">year =</span> <span class="fu">unique</span>(year), </span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>                     <span class="at">temp =</span> <span class="fu">tapply</span>(tmean, year, mean, <span class="at">na.rm =</span> T), </span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>                     <span class="at">temp_avg =</span> <span class="fu">tapply</span>(tavg, year, mean, <span class="at">na.rm =</span> T))</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># xx &lt;- xx[order(xx$state, xx$year), ]</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write.table</span>(xx, <span class="at">file =</span> <span class="st">"data/temp-us.txt"</span>, <span class="at">append =</span> T, <span class="at">quote =</span> F, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, </span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>                <span class="at">row.names =</span> F, <span class="at">col.names =</span> F)</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The previous chunk takes some time to run, so it is better not to redo it each time. It is now possible to simply read the file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>data_temp <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/temp-us.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Below, I plot the values of <code>(TMIN + TMAX) / 2</code> (called <span class="math inline">\(T_{mean}\)</span> below and <code>temp</code> in the data frame) against <code>TAVG</code> (called <span class="math inline">\(T_{avg}\)</span> below and <code>temp_avg</code> in the data set) for the 320 out of the <code>nrow(data_temp)</code> rows from <code>data_temp</code> for which we have both <code>temp</code> and <code>temp_avg</code> values.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-84-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>The solid line is the line of equation <span class="math inline">\(T_{mean}=T_{avg}\)</span> while the dashed line is the line of equation <span class="math inline">\(T_{mean}=-0.382+1.014T_{avg}\)</span>. We see that the dashed line is pretty close to the solid line, indicating that <span class="math inline">\(T_{mean}\)</span> is a good predictor of <span class="math inline">\(T_{avg}\)</span>. Nevertheless, there is some variance in the data (<span class="math inline">\(R^2=0.874\)</span>).</p>
+<p>The plot below shows the spatio-temporal distribution of the mean temperatures. We see that we have a wide diversity of temperatures among the different states, with Minnesota being the coldest state with a mean temperature of <span class="math inline">\(5.471\)</span> °C, and Florida being the warmest state with a mean temperature of <span class="math inline">\(22.823\)</span> °C. We also see that there is a relatively high inter-annual intra-state fluctuation.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="x002-data_files/figure-html/unnamed-chunk-88-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>It is now possible to calculate the values of the variables as they will be included in the analyzes. We use formulas similar to those used for the density. To begin, we calculate a weighted mean of the annual temperature, <span class="math inline">\(\theta_k^i\)</span>, calculated using the following formula:</p>
+<p><span class="math display">\[
+\theta_k^i=\frac{\sum_{j=1}^sn_{j,k-1}^iT_{j,k-1}+\theta_{k-1}^i}{\sum_{j=1}^sn_{j,k-1}^i+1}\forall k&gt;0
+\]</span> where <span class="math inline">\(n_{j,k}^i\)</span> is the number of isolates of type <span class="math inline">\(i\)</span> (with <span class="math inline">\(i\in\left(1,2\right))\)</span>, <span class="math inline">\(1\)</span> meaning PRN- and <span class="math inline">\(2\)</span> meaning PRN+) isolated in the state number <span class="math inline">\(j\)</span> during year <span class="math inline">\(k\)</span>, and <span class="math inline">\(T_{j,k}\)</span> is the average temperature of state <span class="math inline">\(j\)</span> during year<span class="math inline">\(k\)</span>. The term <span class="math inline">\(\theta_{k-1}^i\)</span> in the numerator, compensated by the term <span class="math inline">\(+1\)</span> in the denominator, is used to assure that even if we have no strain <span class="math inline">\(i\)</span> one year the denominator is not equal to <span class="math inline">\(0\)</span>. We pose <span class="math inline">\(\theta_k^i=0\)</span>.</p>
+<p>The code chunk below calculates the values of <span class="math inline">\(\theta_k^1\)</span> and <span class="math inline">\(\theta_k^2\)</span> and stores them in two vectors, <code>theta1</code> and <code>theta2</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>table_prn<span class="sc">$</span>temp <span class="ot">&lt;-</span> data_temp<span class="sc">$</span>temp</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>theta1 <span class="ot">=</span> theta2 <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(table_prn<span class="sc">$</span>year))) {</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  theta1 <span class="ot">=</span> <span class="fu">c</span>(theta1, <span class="fu">with</span>(table_prn[table_prn<span class="sc">$</span>year <span class="sc">==</span> k_years[k <span class="sc">-</span> <span class="dv">1</span>] <span class="co"># or k - 1??</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">&amp;</span> table_prn<span class="sc">$</span>prn_def <span class="sc">==</span> <span class="st">"-"</span>, ], </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>     (<span class="fu">sum</span>(Freq <span class="sc">*</span> temp) <span class="sc">+</span> theta1[k <span class="sc">-</span> <span class="dv">1</span>]) <span class="sc">/</span> (<span class="fu">sum</span>(Freq) <span class="sc">+</span> <span class="dv">1</span>)))</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  theta2 <span class="ot">=</span> <span class="fu">c</span>(theta2, <span class="fu">with</span>(table_prn[table_prn<span class="sc">$</span>year <span class="sc">==</span> k_years[k <span class="sc">-</span> <span class="dv">1</span>] <span class="co"># or k - 1??</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                                    <span class="sc">&amp;</span> table_prn<span class="sc">$</span>prn_def <span class="sc">==</span> <span class="st">"+"</span>, ], </span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>     (<span class="fu">sum</span>(Freq <span class="sc">*</span> temp) <span class="sc">+</span> theta2[k <span class="sc">-</span> <span class="dv">1</span>]) <span class="sc">/</span> (<span class="fu">sum</span>(Freq) <span class="sc">+</span> <span class="dv">1</span>)))</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The table below shows the values of <span class="math inline">\(\theta_k^1\)</span> and <span class="math inline">\(\theta_k^2\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\theta_k^1\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\theta_k^2\)</span></th>
+<th style="text-align: right;">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5.988740</td>
+<td style="text-align: right;">10.118569</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5.988740</td>
+<td style="text-align: right;">11.064092</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.715485</td>
+<td style="text-align: right;">12.738027</td>
+<td style="text-align: right;">2010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9.672391</td>
+<td style="text-align: right;">9.160647</td>
+<td style="text-align: right;">2011</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.812708</td>
+<td style="text-align: right;">8.851537</td>
+<td style="text-align: right;">2012</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.666007</td>
+<td style="text-align: right;">8.737420</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7.941701</td>
+<td style="text-align: right;">8.639783</td>
+<td style="text-align: right;">2014</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10.166629</td>
+<td style="text-align: right;">6.485076</td>
+<td style="text-align: right;">2015</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.415680</td>
+<td style="text-align: right;">8.336725</td>
+<td style="text-align: right;">2016</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.088496</td>
+<td style="text-align: right;">8.782097</td>
+<td style="text-align: right;">2017</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.314928</td>
+<td style="text-align: right;">8.210013</td>
+<td style="text-align: right;">2018</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.478996</td>
+<td style="text-align: right;">8.508614</td>
+<td style="text-align: right;">2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The values are not used in this form as cofactors. What we used is the difference between <span class="math inline">\(\delta_k^1\)</span> and <span class="math inline">\(\delta_k^2\)</span> (called <span class="math inline">\(\Delta_k^D\)</span>) and the mean value between <span class="math inline">\(\delta_k^1\)</span> and <span class="math inline">\(\delta_k^2\)</span> (called <span class="math inline">\(\mu_k^D\)</span>):</p>
+<p><span class="math display">\[
+\begin{align}
+  &amp; \Delta_k^T=\theta_k^1-\theta_k^2 \\
+  &amp; \mu_k^T=\frac{\theta_k^1+\theta_k^2}{2}
+\end{align}
+\]</span></p>
+<p>The code to obtain the two vectors containing these variables is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Delta_T <span class="ot">=</span> theta1 <span class="sc">-</span> theta2</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mu_T    <span class="ot">=</span> (theta1 <span class="sc">+</span> theta2) <span class="sc">/</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The values of these two vectors are shown in the table below.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(\Delta_k^T\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\mu_k^T\)</span></th>
+<th style="text-align: right;">Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">2007</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-4.1298296</td>
+<td style="text-align: right;">8.053654</td>
+<td style="text-align: right;">2008</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-5.0753528</td>
+<td style="text-align: right;">8.526416</td>
+<td style="text-align: right;">2009</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-5.0225421</td>
+<td style="text-align: right;">10.226756</td>
+<td style="text-align: right;">2010</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.5117444</td>
+<td style="text-align: right;">9.416519</td>
+<td style="text-align: right;">2011</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-0.0388299</td>
+<td style="text-align: right;">8.832123</td>
+<td style="text-align: right;">2012</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-0.0714132</td>
+<td style="text-align: right;">8.701714</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-0.6980828</td>
+<td style="text-align: right;">8.290742</td>
+<td style="text-align: right;">2014</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3.6815527</td>
+<td style="text-align: right;">8.325852</td>
+<td style="text-align: right;">2015</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.0789554</td>
+<td style="text-align: right;">8.376202</td>
+<td style="text-align: right;">2016</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-0.6936005</td>
+<td style="text-align: right;">8.435296</td>
+<td style="text-align: right;">2017</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0.1049146</td>
+<td style="text-align: right;">8.262470</td>
+<td style="text-align: right;">2018</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">-0.0296178</td>
+<td style="text-align: right;">8.493805</td>
+<td style="text-align: right;">2019</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Now that we have prepared the data we want to analyse (object <code>data_prn</code>) and the variables that we will use to study these data (objects <code>Delta_D</code>, <code>mu_D</code>, <code>Delta_T</code> and <code>mu_T</code>), we will save them into one simple final object that we will read during our analyzes.</p>
+<p>The first thing to do is to convert the <code>data_prn</code> classical table into a contingency table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>count_strains <span class="ot">=</span> <span class="fu">tapply</span>(data_prn<span class="sc">$</span>prn_def, <span class="fu">list</span>(data_prn<span class="sc">$</span>year, data_prn<span class="sc">$</span>prn_def), length)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>count_strains[<span class="fu">is.na</span>(count_strains)] <span class="ot">&lt;-</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, we create and save the data frame containing all we need for our analyzes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_analyzes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year    =</span> <span class="fu">unique</span>(data_prn<span class="sc">$</span>year),</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">PRNm    =</span> count_strains[, <span class="dv">1</span>],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">PRNp    =</span> count_strains[, <span class="dv">2</span>],</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Delta_D =</span> Delta_D,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">mu_D    =</span> mu_D,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Delta_T =</span> Delta_T,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">mu_T    =</span> mu_T)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(data_analyzes, <span class="st">"data/data-analyzes.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> F, <span class="at">row.names =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
