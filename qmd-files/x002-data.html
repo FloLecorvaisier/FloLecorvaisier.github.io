@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Florian Lecorvaisier">
-<meta name="dcterms.date" content="2023-02-02">
+<meta name="dcterms.date" content="2023-02-03">
 
 <title>Summary stats - Data</title>
 <style>
@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -175,9 +175,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -190,9 +189,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -213,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 2, 2023</p>
+      <p class="date">February 3, 2023</p>
     </div>
   </div>
   
@@ -229,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 
 </div>
-<section id="the-lefrancq-data-set" class="level1">
+<section id="the-lefrancq-data-set" class="level1 page-columns page-full">
 <h1>The Lefrancq data set</h1>
 <p>The data I use for my analysis has been published in Lefrancq et al.&nbsp;(2022). The dataset was originally published in <code>.xlsx</code> format. I manually cleaned it and converted to the <code>.txt</code> format to simplify its use. After that, I still had some cleaning/filtering to do using R directly.</p>
 <p>The first step was obviously to load the data set into R.</p>
@@ -237,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_lefrancq <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/data-lefrancq-2022.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The map below shows the geographical distribution of the isolates. We can see that most countries with isolates come from North American or European countries.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="dv">110</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
@@ -262,17 +264,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.3</span>),</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.spacing.y =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-map-isolates" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-map-isolates" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-map-isolates-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Geographical distribution of the isolates included in the original data set.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;1: Geographical distribution of the isolates included in the original data set.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The data set consists in 3344 isolates, gathered from 24 between 1935 and 2019. Now, there is an enormous heterogeneity between countries regarding the number of isolates provided to the data set, as shown below.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>table_lefrancq_c  <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(data_lefrancq<span class="sc">$</span>country))</span>
@@ -289,18 +291,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-isolates-country" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-isolates-country" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-isolates-country-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Total number of isolates per country.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;2: Total number of isolates per country.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We can see that the two dominant countries, the United States (US) and France (FR), represent together 73.8 % of all the isolates. Thus, most countries in the data set cannot be studied the way we plan as there is too few data.</p>
 <p>There also is a high heterogeneity in the period of isolation, as shown below.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table_lefrancq_y  <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(data_lefrancq<span class="sc">$</span>year_isolated))</span>
@@ -315,18 +317,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Ubuntu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-isolates-year" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-isolates-year" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-isolates-year-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Total number of isolates per year.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;3: Total number of isolates per year.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We can observe that most of the isolates (79.75) %) have been sampled after 2010. This means that our analyzes will have to be lead on short time spans (hardly more than two decades, or even less depending on the analysis).</p>
 <p>The figure below summarizes the data shown in the two previous figures.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table_lefrancq_cy <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(data_lefrancq<span class="sc">$</span>country, </span>
@@ -343,11 +345,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="fu">element_blank</span>(), <span class="at">y =</span> <span class="st">""</span>, <span class="at">size =</span> <span class="st">"Number of</span><span class="sc">\n</span><span class="st">isolates"</span>) <span class="sc">+</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Ubuntu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-isolates-country-year" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-isolates-country-year" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-isolates-country-year-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Total number of isolates per country and per year.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;4: Total number of isolates per country and per year.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -404,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>[Create table here?]</p>
 <p>The figure below shows which states have been sampled for <em>B. pertussis</em> isolates. We see that there are no isolates coming from quite a few states. Note that because a state has not been sampled does not mean the state did not reported pertussis cases. Also note that some states have provided isolates but only for years before the period of interest. The reasons of this heterogeneity in the distribution of the isolates is not known.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>us_map <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">"united states of america"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
@@ -430,17 +432,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.14</span>),</span>
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.spacing.y =</span> <span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-isolates-state" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-isolates-state" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-isolates-state-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Geographical distribution of the isolates accross the United States.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;5: Geographical distribution of the isolates accross the United States.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>As mentioned earlier, our analysis of the American data set will rely on the availability of a lower level of geographical distribution of the isolates, which is their state of origin. We also said that we will focus in a first time on the spread of PRN- strains. The figure below shows the distribution of the isolates per state and per year, as well as the proportion of PRN- isolates, in the final data set.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>table_prn2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">state =</span> <span class="fu">as.character</span>(table_prn<span class="sc">$</span>state[table_prn<span class="sc">$</span>prn_def <span class="sc">==</span> <span class="st">"-"</span>]),</span>
@@ -464,17 +466,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Ubuntu"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-proportion-prn" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-proportion-prn" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-proportion-prn-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6: Number of isolates and proportion of PRN- isolates accross the states and years included in the analysis.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;6: Number of isolates and proportion of PRN- isolates accross the states and years included in the analysis.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Ultimately, what will interest us is to explain the increased frequency of PRN- isolates in the United States during the period 2007 to 2019, regardless of the state of origin. The information about the state of origin will only be kept in the calculation of the variables values. In the figure below, we can see how the proportion of PRN- isolates changes with time.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>count_strains <span class="ot">=</span> <span class="fu">with</span>(data_prn, <span class="fu">tapply</span>(prn_def, <span class="fu">list</span>(year, prn_def), length))</span>
@@ -491,20 +493,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Ubuntu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-prop-prn" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-prop-prn" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-prop-prn-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7: Change in the proportion of PRN- isolates along time.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;7: Change in the proportion of PRN- isolates along time.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="the-variables" class="level1">
+<section id="the-variables" class="level1 page-columns page-full">
 <h1>The variables</h1>
 <p>Our first interest was to check if different variables could help to understand the structure of our data. These variables were meant to be included in a sort of GLM, as described in the “GLM” page.</p>
-<section id="the-density-data" class="level2">
+<section id="the-density-data" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-density-data">The density data</h2>
 <p>The first variable we wanted to introduce in the model is the population density. To obtain the population density at the state scale for each year, two variables are needed: the population size of the state each year, and the state area.</p>
 <p>For the population size, surveys are conducted every 10 years and available on the website of the <a href="https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/population-change-data-table.pdf">United States Census Bureau</a> (last accessed on 01/11/2023). To intrapolate the population sizes between two surveys, a simple method consists in considering that the population grows linearly between two surveys. Thus, we have:</p>
@@ -555,7 +557,7 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">quote =</span> F, <span class="at">row.names =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Below, we can see the density curves of the annual population density for each state included in the Lefrancq data set, for the period 2007-2019.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_density) <span class="sc">+</span></span>
@@ -567,11 +569,11 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"transparent"</span>, <span class="at">color =</span> <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-density" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-density" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-density-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8: Population density accross the different states included in the analysis.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;8: Population density accross the different states included in the analysis.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -773,7 +775,7 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 </div>
 </div>
 </section>
-<section id="the-temperature-data" class="level2">
+<section id="the-temperature-data" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-temperature-data">The temperature data</h2>
 <p>To access quality temperature data from the United States was way harder than to access density data. The reference in the United States to retrieve climate data is the <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily">Global Historical Climatology Network daily (GHCNd) website</a> (last accessed on 13/01/2023). Their data is directly available through an HTTPS portal, thus making it easy to automatically download interesting data. Note though that too much requests on the servers will cause the connection to the server to shut down.</p>
 <p>The first step is to download a file available on the server containing the metadata of the meteorological stations from the network. The file is available <a href="https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt">here</a> (last accessed on 18/01/2023). For commodity, we save the file on our local drive instead of downloading it each time we need it.</p>
@@ -828,7 +830,7 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                                                                  <span class="sc">&amp;</span> inventory<span class="sc">$</span>end   <span class="sc">&gt;=</span> <span class="dv">2019</span>], ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the end, there are 4152 stations kept. The map below shows the geographical distribution of the stations used in the study. We can see that the stations are nicely distributed among and within the states, thus we have a good depiction of the average temperature for each state in the study.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">sf_transform_xy</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> list_stations<span class="sc">$</span>lon, <span class="at">y =</span> list_stations<span class="sc">$</span>lat), </span>
@@ -842,11 +844,11 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Ubuntu"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-stations" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-stations" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-stations-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9: Geographical distribution of the stations used to calculate our temperature-related variables.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;9: Geographical distribution of the stations used to calculate our temperature-related variables.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -936,7 +938,7 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_temp <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/temp-us.txt"</span>, <span class="at">header =</span> T, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Below, I plot the values of <code>(TMIN + TMAX) / 2</code> (called <span class="math inline">\(T_{mean}\)</span> below and <code>temp</code> in the data frame) against <code>TAVG</code> (called <span class="math inline">\(T_{avg}\)</span> below and <code>temp_avg</code> in the data set) for the 320 out of the <code>nrow(data_temp)</code> rows from <code>data_temp</code> for which we have both <code>temp</code> and <code>temp_avg</code> values.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -957,11 +959,11 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="fu">bquote</span>(R<span class="sc">**</span><span class="dv">2</span><span class="sc">==</span>.(r2))) <span class="sc">+</span></span>
 <span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Ubuntu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-link-temp" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-link-temp" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-link-temp-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;10: Relation between the average temperature and the mean temperature, as defined in the text.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;10: Relation between the average temperature and the mean temperature, as defined in the text.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -971,7 +973,7 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 </div>
 <p>The solid line is the line of equation <span class="math inline">\(T_{mean}=T_{avg}\)</span> while the dashed line is the line of equation <span class="math inline">\(T_{mean}=-0.382+1.014T_{avg}\)</span>. We see that the dashed line is pretty close to the solid line, indicating that <span class="math inline">\(T_{mean}\)</span> is a good predictor of <span class="math inline">\(T_{avg}\)</span>. Nevertheless, there is some variance in the data (<span class="math inline">\(R^2=0.874\)</span>).</p>
 <p>The plot below shows the spatio-temporal distribution of the mean temperatures. We see that we have a wide diversity of temperatures among the different states, with Minnesota being the coldest state with a mean temperature of <span class="math inline">\(5.471\)</span> °C, and Florida being the warmest state with a mean temperature of <span class="math inline">\(22.823\)</span> °C. We also see that there is a relatively high inter-annual intra-state fluctuation.</p>
-<div class="cell">
+<div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ordered_state <span class="ot">&lt;-</span> <span class="fu">with</span>(data_temp, <span class="fu">factor</span>(state, </span>
@@ -984,11 +986,11 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Mean annual temperature (°C)"</span>, <span class="at">y =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
 <span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Ubuntu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div id="fig-temp" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
+<div class="cell-output-display page-columns page-full">
+<div id="fig-temp" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="x002-data_files/figure-html/fig-temp-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;11: Mean temperature accross the different states included in the analysis.</figcaption><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;11: Mean temperature accross the different states included in the analysis.</figcaption><p></p>
 </figure>
 </div>
 </div>
