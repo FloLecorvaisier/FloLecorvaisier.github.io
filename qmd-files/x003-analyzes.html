@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Florian Lecorvaisier">
-<meta name="dcterms.date" content="2023-02-06">
+<meta name="dcterms.date" content="2023-02-08">
 
 <title>Summary stats - Analyzes</title>
 <style>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 6, 2023</p>
+      <p class="date">February 8, 2023</p>
     </div>
   </div>
   
@@ -282,15 +282,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 <p>This formula can be adapted to obtain the proportion of PRN- strains at each time step <span class="math inline">\(t\)</span> knowing the value proportion of PRN- strains at time <span class="math inline">\(t=0\)</span> and the values of the different variables. The complete model can thus be written:</p>
 <p><span class="math display">\[
-\log\left(\frac{p_t}{1-p_t}\right)=\log\left(\frac{p_0}{1-p_0}\right)+a_0t+\sum_{v=1}^{n_v}a_v\sum_{k=0}^{t-1}X_k^v
+\log\left(\frac{p_t}{1-p_t}\right)=\log\left(\frac{p_0}{1-p_0}\right)+a_0t+\sum_{v=1}^{n_v}a_v\sum_{k=1}^tX_k^v
 \]</span></p>
 <p>where <span class="math inline">\(p_t\)</span> is the proportion of PRN- isolates at time <span class="math inline">\(t\)</span>, <span class="math inline">\(p_0\)</span> is the proportion of PRN- isolates at time <span class="math inline">\(0\)</span>, <span class="math inline">\(a_0\)</span> is the growth coefficient associated with time (representing the selection coefficient of PRN- isolates), <span class="math inline">\(a_v\)</span> is the coefficient associated with variable <span class="math inline">\(v\)</span>, <span class="math inline">\(n_v\)</span> is the number of variables included in the model, and <span class="math inline">\(X_k^v\)</span> is the value of variable <span class="math inline">\(v\)</span> at time <span class="math inline">\(k\)</span>.</p>
+<blockquote class="blockquote">
+<p>Note: while the proportion of PRN- isolates at time <span class="math inline">\(t\)</span> (<span class="math inline">\(p_t\)</span>) takes into account the value of <span class="math inline">\(X^v_k\)</span> up to <span class="math inline">\(k=t\)</span>, note that only the values of the raw variables up to <span class="math inline">\(k=t-1\)</span> are taken into account. This is because the value of <span class="math inline">\(X^v_k\)</span> (which is the final variable as included in the model) is calculated using the value of the raw variable at time <span class="math inline">\(k-1\)</span>. To understand it more clearly, go read the “The variables” section in the “Data” page.</p>
+</blockquote>
 <p>The complete demonstration of the model can be found elsewhere.</p>
 <p>Now, since we have four variables, <span class="math inline">\(\Delta^D\)</span>, <span class="math inline">\(\mu^D\)</span>, <span class="math inline">\(\Delta^T\)</span> and <span class="math inline">\(\mu^T\)</span>, we can rewrite the specific model we use as:</p>
 <p><span class="math display">\[
 \begin{align}
 \log\left(\frac{p_t}{1-p_t}\right)&amp; = \log\left(\frac{p_0}{1-p_0}\right)+a_0t \\
-&amp; +a_1\sum_{k=0}^{t-1}\Delta^D_k+a_2\sum_{k=0}^{t-1}\mu^D_k+a_3\sum_{k=0}^{t-1}\Delta^T_k+a_4\sum_{k=0}^{t-1}\mu^T_k
+&amp; +a_1\sum_{k=1}^t\Delta^D_k+a_2\sum_{k=1}^t\mu^D_k+
+a_3\sum_{k=1}^t\Delta^T_k+a_4\sum_{k=1}^t\mu^T_k
 \end{align}
 \]</span></p>
 <p>To lead our analysis, we must calculate the cumulative sums of our variables. This is done using the following code. Note that we place a value of <span class="math inline">\(0\)</span> at the beginning of each vector because we consider that at time <span class="math inline">\(t=0\)</span> the variables do not explain the proportion of PRN- isolates. In other terms, the start of the invasion is different from the invasive phase.</p>
@@ -571,7 +575,7 @@ QAICc=-2\frac{\ln\left(\mathcal{L}\right)}{\hat{c}}+2K+\frac{2K\left(K+1\right)}
 <div class="cell-output-display page-columns page-full">
 <div id="fig-pred-obs-glm" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-pred-obs-glm-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-pred-obs-glm-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;1: Predicted and observed proportion of PRN- strains at each time point of the analysis.</figcaption><p></p>
 </figure>
 </div>
@@ -733,7 +737,7 @@ QAICc=-2\frac{\ln\left(\mathcal{L}\right)}{\hat{c}}+2K+\frac{2K\left(K+1\right)}
 <div class="cell-output-display page-columns page-full">
 <div id="fig-alpha" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-alpha-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-alpha-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;2: Change in the type-I error rate when the values of the parameters move.</figcaption><p></p>
 </figure>
 </div>
@@ -839,7 +843,7 @@ QAICc=-2\frac{\ln\left(\mathcal{L}\right)}{\hat{c}}+2K+\frac{2K\left(K+1\right)}
 <div class="cell-output-display page-columns page-full">
 <div id="fig-alpha-glmm" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-alpha-glmm-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-alpha-glmm-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;3: Change in the type-I error rate when the standard deviation of the random variations rises for the GLMM analysis.</figcaption><p></p>
 </figure>
 </div>
@@ -905,7 +909,7 @@ QAICc=-2\frac{\ln\left(\mathcal{L}\right)}{\hat{c}}+2K+\frac{2K\left(K+1\right)}
 <p>The model is composed of nodes, and these nodes can be divided into two categories: deterministic nodes (indicated by the symbol <code>&lt;-</code>) and stochastic nodes (indicated by the symbol <code>~</code>). A deterministic node means that the value of the node is attributed and thus, known, while a stochastic node means that the value fo the node is taken from a given probability distribution.</p>
 <p>Let’s explain how the model works. Since it is written in BUGS language, it is not important in which order the elements of the model are given, so the order shown below does not correspond to any real order.</p>
 <ul>
-<li><p>The model draws the value of <span class="math inline">\(p_0\)</span> from a uniform distribution (<span class="math inline">\(p_0\sim\mathcal{U}\left(0,1\right)\)</span>). From this it calculates <span class="math inline">\(\log\left(\frac{p_0}{1-p_0}\right)\)</span> and draws the number of observed PRN- isolates at time $t=0$, <span class="math inline">\(S_0\)</span> (<span class="math inline">\(S_0\sim\mathcal{B}\left(p_0,n_0\right)\)</span>).</p></li>
+<li><p>The model draws the value of <span class="math inline">\(p_0\)</span> from a uniform distribution (<span class="math inline">\(p_0\sim\mathcal{U}\left(0,1\right)\)</span>). From this it calculates <span class="math inline">\(\log\left(\frac{p_0}{1-p_0}\right)\)</span> and draws the number of observed PRN- isolates at time <span class="math inline">\(t=0\)</span>, <span class="math inline">\(S_0\)</span> (<span class="math inline">\(S_0\sim\mathcal{B}\left(p_0,n_0\right)\)</span>).</p></li>
 <li><p>The model draws the values of <span class="math inline">\(a_x, x\in\left(0, 1… 4\right)\)</span> from normal distributions of mean <span class="math inline">\(\mu_x\)</span> and standard deviation <span class="math inline">\(\sigma_x\)</span> (<span class="math inline">\(a_x\sim\mathcal{N}\left(\mu_x, \sigma_x\right)\)</span>). <span class="math inline">\(\mu_x\)</span> and <span class="math inline">\(\sigma_x\)</span> are themselves drawn from uniform distributions with arbitrary values (<span class="math inline">\(p_0\sim\mathcal{U}\left(-100,100\right)\)</span> and <span class="math inline">\(\sigma_x\sim\mathcal{U}\left(0,50\right)\)</span>). It also draws the standard deviation of the error, <span class="math inline">\(\sigma_{err}\)</span> (<span class="math inline">\(\sigma_err\sim\mathcal{U}\left(0,50\right)\)</span>).</p></li>
 <li><p>The model calculates, for all <span class="math inline">\(t&gt;0\)</span>, the value of <span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)\)</span>, the value of <span class="math inline">\(\log\left(\frac{p_t}{1-p_t}\right)\)</span> (see below), the value of <span class="math inline">\(p_t\)</span>, and it draws <span class="math inline">\(S_t\)</span> from a binomial distribution (<span class="math inline">\(S_t\sim\mathcal{B}\left(p_t, n_t\right)\)</span>). It also draws the error <span class="math inline">\(\varepsilon_t\)</span> from a normal distribution (<span class="math inline">\(\varepsilon_t\sim\mathcal{N}\left(0, \sigma_{err}\right)\)</span>).</p></li>
 </ul>
@@ -1191,7 +1195,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-sigma" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-sigma-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-sigma-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;4: Distribution of the posteriori distribution of <span class="math inline">\(\sigma_{err}\)</span> for the 16 models.</figcaption><p></p>
 </figure>
 </div>
@@ -1245,7 +1249,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-a" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-a-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-a-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;5: Distribution of the posteriori distribution of <span class="math inline">\(a_{1}\)</span> to <span class="math inline">\(a_{4}\)</span> for the 16 models.</figcaption><p></p>
 </figure>
 </div>
@@ -1275,7 +1279,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-dic" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-dic-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-dic-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;6: Values of the DICs for the different models after 20 simulations per model.</figcaption><p></p>
 </figure>
 </div>
@@ -1317,7 +1321,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-dic-pvalue" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-dic-pvalue-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-dic-pvalue-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;7: Pairwise t-tests between the DICs of the 16 models.</figcaption><p></p>
 </figure>
 </div>
@@ -1476,7 +1480,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-lag-dic" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-lag-dic-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-lag-dic-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;8: Values of the DICs for the different lag values after 20 simulations per value, for the complete model.</figcaption><p></p>
 </figure>
 </div>
@@ -1571,7 +1575,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-epsilon" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-epsilon-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-epsilon-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;9: Values of <span class="math inline">\(\varepsilon_t\)</span> for the different values of <span class="math inline">\(t\)</span> and the different models.</figcaption><p></p>
 </figure>
 </div>
@@ -1665,7 +1669,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-epsilon-2" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-epsilon-2-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-epsilon-2-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;10: Values of <span class="math inline">\(\varepsilon_t\)</span> for the different values of <span class="math inline">\(t\)</span> and the different models.</figcaption><p></p>
 </figure>
 </div>
@@ -1783,7 +1787,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-sigma-2" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-sigma-2-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-sigma-2-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;11: Distribution of the posteriori distribution of <span class="math inline">\(\sigma_{err}\)</span> for the 16 models.</figcaption><p></p>
 </figure>
 </div>
@@ -1841,7 +1845,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-a-2" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-a-2-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-a-2-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;12: Distribution of the posteriori distribution of <span class="math inline">\(a_{1}\)</span> to <span class="math inline">\(a_{4}\)</span> for the 16 models.</figcaption><p></p>
 </figure>
 </div>
@@ -1871,7 +1875,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-dic-2" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-dic-2-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-dic-2-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;13: Values of the DICs for the different models after 20 simulations per model.</figcaption><p></p>
 </figure>
 </div>
@@ -1913,7 +1917,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <div class="cell-output-display page-columns page-full">
 <div id="fig-all-dic-pvalue-2" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-all-dic-pvalue-2-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-all-dic-pvalue-2-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;14: Pairwise t-tests between the DICs of the 16 models.</figcaption><p></p>
 </figure>
 </div>
@@ -2073,7 +2077,7 @@ a_1=p\sigma^2_{res}=0.5\times 0.439 = 0.22
 <div class="cell-output-display page-columns page-full">
 <div id="fig-power" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-power-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-power-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;15: Observed and predicted power as a function of the proportion of the residual variance explaiend by the explanatory’s variable coefficient.</figcaption><p></p>
 </figure>
 </div>
@@ -2105,7 +2109,7 @@ a_1=p\sigma^2_{res}=0.5\times 0.439 = 0.22
 <div class="cell-output-display page-columns page-full">
 <div id="fig-comp-dic" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="x003-analyzes_files/figure-html/fig-comp-dic-1.svg" class="img-fluid figure-img" width="672"></p>
+<p><img src="x003-analyzes_files/figure-html/fig-comp-dic-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;16: Comparision of the DICs of the 16 models between the two Bayesian analyzes.</figcaption><p></p>
 </figure>
 </div>
