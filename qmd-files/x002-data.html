@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Florian Lecorvaisier">
-<meta name="dcterms.date" content="2023-02-08">
+<meta name="dcterms.date" content="2023-02-09">
 
 <title>Summary stats - Data</title>
 <style>
@@ -215,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2023</p>
+      <p class="date">February 9, 2023</p>
     </div>
   </div>
   
@@ -364,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_lefrancq <span class="ot">&lt;-</span> data_lefrancq[data_lefrancq<span class="sc">$</span>country <span class="sc">==</span> <span class="st">"US"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now, the data set has been reduced to 1457 isolates gathered between 1935 and 2019. From there, we decided to lead an analysis on the temporal spread of PRN-deficient strains. PRN, or pertactin, is a surface protein found in most <em>Bordetella pertussis</em> strains. As an antigen, it is part of most of the ACellular Vaccines (ACV) used against pertussis. These vaccines create selective pressures thought to favorize strains lacking PRN, called PRN-deficient or PRN- strains (opposed to PRN-producing or PRN+ strains).</p>
+<p>Now, the data set has been reduced to 1457 isolates gathered between 1935 and 2019. From there, we decided to lead an analysis on the temporal spread of PRN-deficient strains. PRN, or pertactin, is a surface protein found in most <em>Bordetella pertussis</em> strains. As an antigen, it is part of most of the ACellular Vaccines (ACV) used against pertussis. These vaccines create selective pressures thought to favor strains lacking PRN, called PRN-deficient or PRN- strains (opposed to PRN-producing or PRN+ strains).</p>
 <p>The dataset had thus to be filtered to only keep records from which we dispose of three information:</p>
 <ul>
 <li>The PRN+ or PRN- status of the isolate;</li>
@@ -404,7 +404,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>table_prn <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">with</span>(data_prn, <span class="fu">table</span>(year, state, prn_def)))[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>)]</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>table_prn<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(table_prn<span class="sc">$</span>year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>[Create table here?]</p>
 <p>The figure below shows which states have been sampled for <em>B. pertussis</em> isolates. We see that there are no isolates coming from quite a few states. Note that because a state has not been sampled does not mean the state did not reported pertussis cases. Also note that some states have provided isolates but only for years before the period of interest. The reasons of this heterogeneity in the distribution of the isolates is not known.</p>
 <div class="cell page-columns page-full">
 <details>
@@ -505,7 +504,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="the-variables" class="level1 page-columns page-full">
 <h1>The variables</h1>
-<p>Our first interest was to check if different variables could help to understand the structure of our data. These variables were meant to be included in a sort of GLM, as described in the “GLM” page.</p>
+<p>Our first interest was to check if different variables could help to understand the structure of our data. These variables were meant to be included in a sort of GLM, as described in the “Analyzes” page, “GLM” section.</p>
 <section id="the-density-data" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-density-data">The density data</h2>
 <p>The first variable we wanted to introduce in the model is the population density. To obtain the population density at the state scale for each year, two variables are needed: the population size of the state each year, and the state area.</p>
@@ -545,7 +544,7 @@ P_j\left(x+y\right)=P_j\left(x\right)+\frac{P_j\left(x + 10\right)-P_j\left(x\ri
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  data_density<span class="sc">$</span>state[data_density<span class="sc">$</span>state <span class="sc">==</span> state] <span class="ot">&lt;-</span> states_names<span class="sc">$</span>short[states_names<span class="sc">$</span>long <span class="sc">==</span> state]</span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># With these two lines, I keep density only from years and states in the range of interest, and order the output.</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># With these two lines, we keep the density only from years and states in the range of interest, and order the output.</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>data_density <span class="ot">&lt;-</span> data_density[data_density<span class="sc">$</span>state <span class="sc">%in%</span> data_prn<span class="sc">$</span>state</span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                              <span class="sc">&amp;</span> data_density<span class="sc">$</span>year <span class="sc">%in%</span> <span class="dv">2007</span><span class="sc">:</span><span class="dv">2019</span>, ]</span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>data_density <span class="ot">&lt;-</span> data_density[<span class="fu">order</span>(data_density<span class="sc">$</span>year, data_density<span class="sc">$</span>state), ]</span>

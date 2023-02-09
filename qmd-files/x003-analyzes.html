@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Florian Lecorvaisier">
-<meta name="dcterms.date" content="2023-02-08">
+<meta name="dcterms.date" content="2023-02-09">
 
 <title>Summary stats - Analyzes</title>
 <style>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2023</p>
+      <p class="date">February 9, 2023</p>
     </div>
   </div>
   
@@ -297,6 +297,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 a_3\sum_{k=1}^t\Delta^T_k+a_4\sum_{k=1}^t\mu^T_k
 \end{align}
 \]</span></p>
+<p>In the figures present on this page, the formulas of the models are not directly written. They have an assigned number for a greater readibility. The table below shows which number corresponds to which model.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 93%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Formula</th>
+<th style="text-align: right;">Number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0\)</span></td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t\)</span></td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_2\mu^D_t\)</span></td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t+a_2\mu^D_t\)</span></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_3\Delta^T_t\)</span></td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t+a_3\Delta^T_t\)</span></td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_2\mu^D_t+a_3\Delta^T_t\)</span></td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t+a_2\mu^D_t+a_3\Delta^T_t\)</span></td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_2\mu^D_t+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t+a_2\mu^D_t+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_3\Delta^T_t+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t+a_3\Delta^T_t+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_2\mu^D_t+a_3\Delta^T_t+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(\Delta\log\left(\frac{p_t}{1-p_t}\right)=a_0+a_1\Delta^D_t+a_2\mu^D_t+a_3\Delta^T_t+a_4\mu^T_t\)</span></td>
+<td style="text-align: right;">15</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>To lead our analysis, we must calculate the cumulative sums of our variables. This is done using the following code. Note that we place a value of <span class="math inline">\(0\)</span> at the beginning of each vector because we consider that at time <span class="math inline">\(t=0\)</span> the variables do not explain the proportion of PRN- isolates. In other terms, the start of the invasion is different from the invasive phase.</p>
 <p>Note that because our variables have different units and thus highly different ranges, it is a good practice to first center them. If we do not do so, the <span class="math inline">\(a_0\)</span> coefficient estimation will be biased (while the other coefficients are not affected by this centering).</p>
 <div class="cell">
@@ -873,7 +956,7 @@ QAICc=-2\frac{\ln\left(\mathcal{L}\right)}{\hat{c}}+2K+\frac{2K\left(K+1\right)}
   for (t in 2:(tmax)) {
     deltalogitp[t] &lt;- 
       a[1] + 
-      a[2] * X1[t - 1] + 
+      a[2] * X1[t - 1] +
       a[3] * X2[t - 1] +
       a[4] * X3[t - 1] +
       a[5] * X4[t - 1] +
@@ -1145,7 +1228,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 </section>
 <section id="visualization" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="visualization">Visualization</h3>
-<p>It is now possible to visualize the outputs of the simulations. The first step is to aggregate the different files into bigger files to make them more practical to use. We also add</p>
+<p>It is now possible to visualize the outputs of the simulations. The first step is to aggregate the different files into bigger files to make them more practical to use.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"model</span><span class="sc">\t</span><span class="st">rep</span><span class="sc">\t</span><span class="st">a0</span><span class="sc">\t</span><span class="st">a1</span><span class="sc">\t</span><span class="st">a2</span><span class="sc">\t</span><span class="st">a3</span><span class="sc">\t</span><span class="st">a4</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">file =</span> <span class="st">"data/posteriori-all-models-a.txt"</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"model</span><span class="sc">\t</span><span class="st">rep</span><span class="sc">\t</span><span class="st">sigma</span><span class="sc">\n</span><span class="st">"</span>, <span class="at">file =</span> <span class="st">"data/posteriori-all-models-sigma.txt"</span>)</span>
@@ -1163,6 +1246,8 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">append =</span> T, <span class="at">quote =</span> F, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> F, <span class="at">col.names =</span> F)</span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>The figure below shows the values of <span class="math inline">\(\sigma_{err}\)</span>. Each point is a value. The color difference between lines is only here to help differentiate one model from another, but on a same line a point is darker is it falls inside the 95% credible interval and lighter if it falls outside.</p>
+<p>We can see that the mean value (marked by a diamond) fluctuates a little between models, and that there is a more or less clear separation between models 0-7 and models 8-15. In the later, the variable <span class="math inline">\(\mu^T\)</span> is included, whereas in the former it is not. It thus appears that including this variable in the model helps in reducing the error, i.e., the residual variance.</p>
 <div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
@@ -1201,6 +1286,8 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 </div>
 </div>
 </div>
+<p>On the figure below we show the values of the different coefficients for the variables. The figure is read like the previous one. The dashed bar indicates 0 and helps seeing if the credible intervals include 0.</p>
+<p>We can see that for <span class="math inline">\(\Delta^D\)</span>, <span class="math inline">\(\mu^D\)</span> and <span class="math inline">\(\Delta^T\)</span> the credible interval of the value of the coefficient associated almost always includes 0 (the exceptions being models number 13 and 15 for the coefficient of <span class="math inline">\(\Delta^D\)</span>), but it is not the case for <span class="math inline">\(\mu^T\)</span>, as some intervals do not include 0. It thus seems, as previously thought and as confirmed in the next section, that this variable but not the others is of great interest in the analysis of our data.</p>
 <div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
@@ -1256,6 +1343,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 </div>
 </div>
 <p>The figure below shows the mean values of the DIC for each model. The bars indicate the 95% confidence interval associated with the values. We can see that the best model (i.e., the model with the lowest DIC) is model number 13, and the worst model is by far model number 12. Note though that while statistically significant (see next figure), the differences in the DICs are low and thus not really informative.</p>
+<p>It is particularly interesting (and a bit disturbing) to see that the best models are not necessarily the models that include <span class="math inline">\(\mu^T\)</span>. We do not have an explanation for this phenomenon, and in the next section it disappears (the best models are the ones with <span class="math inline">\(\mu^T\)</span>).</p>
 <div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
@@ -1470,12 +1558,13 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>data_plot_dic_lag <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(dic_mean, dic_lower, dic_upper, <span class="at">lag =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_plot_dic_lag) <span class="sc">+</span></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> dic_mean, <span class="at">y =</span> lag)) <span class="sc">+</span></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> dic_lower, <span class="at">xmax =</span> dic_upper, <span class="at">y =</span> lag)) <span class="sc">+</span></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"DIC"</span>, <span class="at">y =</span> <span class="st">"Lag (years)"</span>) <span class="sc">+</span></span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Ubuntu"</span>) <span class="sc">+</span></span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> dic_mean, <span class="at">y =</span> lag),</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">18</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> dic_lower, <span class="at">xmax =</span> dic_upper, <span class="at">y =</span> lag)) <span class="sc">+</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"DIC"</span>, <span class="at">y =</span> <span class="st">"Lag (years)"</span>) <span class="sc">+</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> <span class="st">"Ubuntu"</span>) <span class="sc">+</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor.y =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display page-columns page-full">
 <div id="fig-lag-dic" class="quarto-figure quarto-figure-center anchored page-columns page-full">
@@ -1752,7 +1841,7 @@ X^1 \\ X^2 \\ X^3 \\ X^4
 <span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can make some plots. The plot below shows the values of <span class="math inline">\(\sigma_{err}\)</span>. Each point is a value. The color difference between lines is only here to help differentiate one model from another, but on a same line a point is darker if it falls inside the 95% credible interval and lighter if it falls outside.</p>
-<p>We can see that the value fluctuates a little between models, and that there is a major separation between models 0-7 and models 8-15. In the later, the variable <span class="math inline">\(\mu^T\)</span> is included, whereas in the former it is not. It thus appears that including this variable in the model helps in reducing the error, i.e., the residual variance.</p>
+<p>We can see that the mean value (indicated by a diamond) fluctuates a little between models, and that there is a major separation between models 0-7 and models 8-15. In the later, the variable <span class="math inline">\(\mu^T\)</span> is included, whereas in the former it is not. It thus appears that including this variable in the model helps in reducing the error, i.e., the residual variance.</p>
 <div class="cell page-columns page-full">
 <details>
 <summary>Show the code</summary>
