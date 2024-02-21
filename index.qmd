@@ -1,0 +1,9 @@
+---
+title: "Main page"
+author: "Florian Lecorvaisier"
+format: html
+editor: visual
+embed-resources: true
+---
+
+The main goal of this website is to train myself into using Git, GitHub, and Quarto.
