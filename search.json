@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Florian Lecorvaisier’s website",
+    "section": "",
+    "text": "Welcome to my poorly done website! I use it mostly to develop my skills in Quarto, Git, HTML and CSS, as well as to post some stuff I may find interesting."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum vitæ",
+    "section": "",
+    "text": "Eco-epidemiology researcher with a particular interest in the evolution of infectious diseases."
+  },
+  {
+    "objectID": "cv.html#work-history",
+    "href": "cv.html#work-history",
+    "title": "Curriculum vitæ",
+    "section": "Work history",
+    "text": "Work history\n   PhD Student\n\n   10/2021 - 09/2024              LBBE, Villeurbanne, France\nWorking on the evolution of diphtheria and pertussis under vaccine pressure by the mean of mathematical modeling, numerical simulations and statistical analyzes.\n\n \n   Master degree internship\n\n   01/2021 - 06/2021              LBBE, Villeurbanne, France\nDeveloping a SIR-like model to study how toxoid vaccines could select for toxin-deficient strains.\n\n \n   Bachelor degree internship\n\n   06/2019                        LEHNA, Villeurbanne, France\nDeveloping a database of amphibian dispersal distances and morphological traits."
+  },
+  {
+    "objectID": "cv.html#skills",
+    "href": "cv.html#skills",
+    "title": "Curriculum vitæ",
+    "section": "Skills",
+    "text": "Skills\n\n\n\n\n\n\nProgramming\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\n\nLaTeX\n\n\n\nPython\n\n\n\nGit & GitHub\n\n\n\nBash\n\n\n\n\n\n\n\n\n\n\n\n\n\nOperating systems\n\n\n\n\n\n\n\n\n\n\n\n\nWindows\n\n\n\nLinux (Ubuntu)\n\n\n\n\n\n\n\n\n\n\n\n\n\nSoftware & Tools\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio\n\n\n\nMicrosoft Office\n\n\n\n\n\n\n\n\n\n\n\n\n\nLanguages\n\n\n\n\n\n\n\n\n\n\n\n\nFrench\n\n\n\nEnglish\n\n\n\nSpanish\n\n\n\nJapanese"
+  },
+  {
+    "objectID": "cv.html#publications",
+    "href": "cv.html#publications",
+    "title": "Curriculum vitæ",
+    "section": "Publications",
+    "text": "Publications\n   Etude sur la compétition intra-spécifique entre souches bactérienne dans le contexte de la vaccination de masse : approches théorique et statistique\n\n   Lecorvaisier F.\n   2024                       PhD thesis\n   tel-04918453v1\n\n \n   Impact de la vaccination sur l’évolution de Bordetella pertussis\n\n   Lecorvaisier F.\n   2024                       médecine/sciences, vol. 40, n°2, pp. 161-166\n   10.1051/medsci/2023219\n\n \n   Using a dynamical model to study the impact of a toxoid vaccine on the evolution of a bacterium: The example of diphtheria\n\n   Lecorvaisier F., Pontier D., Soubeyrand B. and Fouchet D.\n   2024                       Ecological Modelling, vol. 487, pp. 110569\n   10.1051/medsci/2023219"
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "Curriculum vitæ",
+    "section": "Education",
+    "text": "Education\n   Doctoral degree                    Eco-Epidemiology\n\n   10/2021 - 12/2024              University Claude Bernard Lyon 1, France\n\n \n   University Degree                    Evolutionary Biology & Medicine\n\n   10/2021 - 09/2022              University Claude Bernard Lyon 1, France\n\n \n   Master of Science                    Ecology & Evolutionary Biology\n\n   09/2019 - 06/2021              University Claude Bernard Lyon 1, France\n\n \n   Bachelor of Science                    Ecology & Evolutionary Biology\n\n   09/2016 - 06/2021              University Claude Bernard Lyon 1, France"
+  },
+  {
+    "objectID": "cv.html#certificates",
+    "href": "cv.html#certificates",
+    "title": "Curriculum vitæ",
+    "section": "Certificates",
+    "text": "Certificates"
+  },
+  {
+    "objectID": "cv.html#skills-certificates",
+    "href": "cv.html#skills-certificates",
+    "title": "Curriculum vitæ",
+    "section": "Skills & Certificates",
+    "text": "Skills & Certificates\n\n\n\n\n\n\nProgramming\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\n\nLaTeX\n\n\n\nPython\n\n\n\nGit & GitHub\n\n\n\nBash\n\n\n\n\n\n\n\n\n\n\n\n\n\nOperating systems\n\n\n\n\n\n\n\n\n\n\n\n\nWindows\n\n\n\nLinux (Ubuntu)\n\n\n\n\n\n\n\n\n\n\n\n\n\nSoftware & Tools\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio\n\n\n\nMicrosoft Office\n\n\n\n\n\n\n\n\n\n\n\n\n\nLanguages\n\n\n\n\n\n\n\n\n\n\n\n\nFrench\n\n\n\nEnglish\n\n\n\nSpanish\n\n\n\nJapanese"
+  },
+  {
+    "objectID": "cv.html#conferences-and-presentations",
+    "href": "cv.html#conferences-and-presentations",
+    "title": "Curriculum vitæ",
+    "section": "Conferences and presentations",
+    "text": "Conferences and presentations\n  Rencontres du GdR Phylodynamique\n\n   2023                           Villeurbanne, France\n\n \n  13th International Bordetella Symposium\n\n   2022                           Vancouver, Canada\n\n \n  EvoLyon\n\n   2021                           Lyon, France"
+  },
+  {
+    "objectID": "cv.html#achievements-honours-and-awards",
+    "href": "cv.html#achievements-honours-and-awards",
+    "title": "Curriculum vitæ",
+    "section": "Achievements, honours and awards",
+    "text": "Achievements, honours and awards\n   3-years grant for funding a thesis\n\n   2021                           E2M2 doctoral school"
+  }
+]
