@@ -1,0 +1,263 @@
+---
+title: "Curriculum vitæ"
+author: 
+  name: 
+    given: Florian
+    family: Lecorvaisier
+  degrees: 
+    - PhD
+    - MSc
+    - BSc
+  orcid: 0000-0001-8201-5350
+  email: florian.lecorvaisier@gmail.com
+  url: https://flolecorvaisier.github.io
+title-block-banner: darkolivegreen
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 4
+    header-includes: |
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+editor: source
+embed-resources: true
+mainfont: Ubuntu
+---
+
+*Eco-epidemiology researcher/engineer with a particular interest in the evolution of infectious diseases.*
+
+## Work history
+
+```{r echo=FALSE, results='asis'}
+df_work <- data.frame(title = c("Assistant engineer",
+                                "PhD Student",
+                                "Master degree internship",
+                                "Bachelor degree internship"),
+                      date = c("10/2025 - ???",
+                               "10/2021 - 09/2024",
+                               "01/2021 - 06/2021",
+                               "06/2019"),
+                      address = c("LBBE, Villeurbanne, France",
+                                  "LBBE, Villeurbanne, France",
+                                  "LBBE, Villeurbanne, France",
+                                  "LEHNA, Villeurbanne, France"),
+                      descr = c("Developping a spatialized individual-based model to understand the dynamics of the African Swine fever and the possible effect of vaccine strategies in a wild boar population.",
+                                "Working on the evolution of diphtheria and pertussis under vaccine pressure by the mean of mathematical modeling, numerical simulations and statistical analyzes.", 
+                                "Developing a SIR-like model to study how toxoid vaccines could select for toxin-deficient strains.",
+                                "Developing a database of amphibian dispersal distances and morphological traits."))
+
+for (i in 1:nrow(df_work)) {
+  cat("{{< fa gears >}} &nbsp; **", df_work$title[i], "**\n\n", sep = "")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa calendar-days >}} &nbsp; ", df_work$date[i], paste0(rep("&nbsp;", ifelse(grepl("-", df_work$date[i]), 12, 22)), collapse = ""),
+      "{{< fa location-dot >}} &nbsp;", df_work$address[i], "\n\n", sep = "")
+  cat(df_work$descr[i], "\n\n")
+  cat(":::\n\n", ifelse(i < nrow(df_work), "&nbsp;\n\n", ""))
+}
+```
+
+## Education
+
+```{r echo=FALSE, results='asis'}
+df_educ <- data.frame(degree = c("Doctoral degree", "University Degree", "Master of Science", "Bachelor of Science"),
+                      title = c("Eco-Epidemiology", "Evolutionary Biology & Medicine", "Ecology & Evolutionary Biology", "Ecology & Evolutionary Biology"),
+                      date = c("10/2021 - 12/2024", "10/2021 - 09/2022", "09/2019 - 06/2021", "09/2016 - 06/2021"),
+                      place = c("University Claude Bernard Lyon 1, France"))
+
+for (i in 1:nrow(df_educ)) {
+  cat("{{< fa graduation-cap >}} &nbsp; **", df_educ$degree[i], "**", rep("&nbsp;", 20), "*", df_educ$title[i], "*\n\n", sep = "")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa calendar-days >}} &nbsp; ", df_educ$date[i], rep("&nbsp;", 12),
+      "{{< fa location-dot >}} &nbsp;", df_educ$place[i], "\n\n", sep = "")
+  cat(":::\n\n", ifelse(i < nrow(df_educ), "&nbsp;\n\n", ""))
+}
+
+```
+
+## Skills
+
+::: {.callout-note icon="false" collapse="true"}
+
+### Programming
+
+```{r echo=FALSE, results="asis", eval=TRUE}
+df_skill <- data.frame(lang = c("R",
+                                "LaTeX",
+                                "Python",
+                                "Git & GitHub",
+                                "Bash"),
+                       score = c(5, 
+                                 3, 
+                                 2,
+                                 2,
+                                 2))
+
+  cat("||\n")
+  cat("|-|-|\n")
+for (i in 1:nrow(df_skill)) {
+  # cat(df_skill$lang[i], rep("&nbsp;", 30), sep = "")
+  cat("|**", df_skill$lang[i], "**|", sep = "")
+  cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
+}
+cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+```
+
+:::
+
+::: {.callout-note icon="false" collapse="true"}
+
+### Operating systems
+
+```{r echo=FALSE, results="asis"}
+df_skill <- data.frame(lang = c("Windows",
+                                "Linux (Ubuntu)"),
+                       score = c(5, 
+                                 3))
+
+  cat("||\n")
+  cat("|-|-|\n")
+for (i in 1:nrow(df_skill)) {
+  # cat(df_skill$lang[i], rep("&nbsp;", 30), sep = "")
+  cat("|**", df_skill$lang[i], "**|", sep = "")
+  cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
+}
+  cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+```
+
+:::
+
+::: {.callout-note icon="false" collapse="true"}
+
+### Software & Tools
+
+```{r echo=FALSE, results="asis"}
+df_skill <- data.frame(lang = c("RStudio",
+                                "Microsoft Office"),
+                       score = c(5, 
+                                 5))
+
+  cat("||\n")
+  cat("|-|-|\n")
+for (i in 1:nrow(df_skill)) {
+  # cat(df_skill$lang[i], rep("&nbsp;", 30), sep = "")
+  cat("|**", df_skill$lang[i], "**|", sep = "")
+  cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
+}
+  cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+```
+
+:::
+
+::: {.callout-note icon="false" collapse="true"}
+
+### Languages
+
+```{r echo=FALSE, results="asis"}
+df_skill <- data.frame(lang = c("French",
+                                "English",
+                                "Spanish",
+                                "Japanese"),
+                       score = c(5, 
+                                 4,
+                                 2,
+                                 1),
+                       certif = c(NA, "TOEIC Reading and Listening Test (980/990)"), NA, NA)
+
+  cat("||\n")
+  cat("|-|-|\n")
+for (i in 1:nrow(df_skill)) {
+  cat("|**", df_skill$lang[i], "**|", sep = "")
+  cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
+}
+  cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+```
+
+:::
+
+## Achievements, honours and awards
+
+```{r echo=FALSE, results='asis'}
+df_acha <- data.frame(title = c("3-years grant for funding a thesis"),
+                      year = c(2021),
+                      structure = c("E2M2 doctoral school"))
+
+for (i in 1:nrow(df_acha)) {
+  cat("{{< fa award >}} &nbsp; **", df_acha$title[i], "**\n\n", sep = "")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa calendar-days >}} &nbsp; ", df_acha$year[i], rep("&nbsp;", 25),
+      "{{< fa pen-nib >}} &nbsp;", df_acha$structure[i], "\n\n", sep = "")
+  cat(":::\n\n", ifelse(i < nrow(df_acha), "&nbsp;\n\n", ""))
+}
+```
+
+
+## Conferences and presentations
+
+```{r echo=FALSE, results='asis'}
+df_conf <- data.frame(type = c("oral", "poster", "poster"),
+                      title = c("Rencontres du GdR Phylodynamique", "13th International Bordetella Symposium", "EvoLyon"),
+                      date = c("2023", "2022", "2021"),
+                      place = c("Villeurbanne, France", "Vancouver, Canada", "Lyon, France"))
+
+for (i in 1:nrow(df_conf)) {
+  cat(ifelse(df_conf$type[i] == "oral", "{{< fa comment >}}", "{{< fa image >}}"), "&nbsp; **", df_conf$title[i], "**\n\n", sep = "")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa calendar-days >}} &nbsp; ", df_conf$date[i], rep("&nbsp;", 25),
+      "{{< fa location-dot >}} &nbsp;", df_conf$place[i], "\n\n", sep = "")
+  cat(":::\n\n", ifelse(i < nrow(df_conf), "&nbsp;\n\n", ""))
+}
+
+```
+
+
+## Publications
+
+```{r echo=FALSE, results='asis'}
+data = data.frame(title = c("Comparing frequentist and Bayesian methods to identify drivers of pathogen strain invasion: A temporal case study of pertussis in the United States",
+                            "Etude sur la compétition intra-spécifique entre souches bactérienne dans le contexte de la vaccination de masse : approches théorique et statistique",
+                            "Impact de la vaccination sur l'évolution de *Bordetella pertussis*",
+                            "Using a dynamical model to study the impact of a toxoid vaccine on the evolution of a bacterium: The example of diphtheria"),
+                  authors = c("Lecorvaisier F., Pontier D., Sauvage F. and Fouchet D.", 
+                              "Lecorvaisier F.",
+                              "Lecorvaisier F.",
+                              "Lecorvaisier F., Pontier D., Soubeyrand B. and Fouchet D."),
+                  year = c(2026,
+                           2024, 
+                           2024, 
+                           2024),
+                  journal = c("Infectious Disease Modelling",
+                              "PhD thesis",
+                              "médecine/sciences", 
+                              "Ecological Modelling"),
+                  supp = c("vol. 11, n°2, pp. 389-406",
+                           NA,
+                           "vol. 40, n°2, pp. 161-166",
+                           "vol. 487, pp. 110569"),
+                  link = c("https://doi.org/10.1016/j.idm.2025.09.007",
+                           "https://hal.science/tel-04918453v1",
+                           "https://doi.org/10.1051/medsci/2023219", 
+                           "https://doi.org/10.1051/medsci/2023219"),
+                  isopen = c(TRUE, TRUE, TRUE, TRUE))
+
+
+for (i in 1:nrow(data)) {
+  cat(paste0(ifelse(isTRUE(data$isopen[i]), "{{< ai open-access color=#f6830a >}} &nbsp; ", ""), data$title[i]), "\n\n")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa people-group >}} &nbsp; ", data$authors[i], "\n\n")
+  cat("{{< fa calendar-days >}} &nbsp; ", data$year[i], paste0(rep("&nbsp;", 20), collapse = ""),
+      "{{< fa book-open >}} &nbsp; *", data$journal[i], "*", sep = "")
+  cat(ifelse(is.na(data$supp[i]), "", paste0(", ", data$supp[i])), "\n\n")
+  if (grepl("doi.org", data$link[i])) {
+    cat("{{< ai doi>}} &nbsp; [", gsub("(.*)doi.org/", "", data$link[i]), "](", data$link[i], ")", sep = "")
+  } else if(grepl("hal.science", data$link[i])) {
+    cat("{{< ai hal>}} &nbsp; [", gsub("(.*)hal.science/", "", data$link[i]), "](", data$link[i], ")", sep = "")
+  }
+  cat("\n\n:::\n\n &nbsp;\n\n")
+}
+
+```
+
+
+

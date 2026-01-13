@@ -1,0 +1,750 @@
+---
+title: "Simple linear regression"
+title-block-banner: darkolivegreen
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 4
+editor: visual
+author: 
+  name: 
+    given: Florian
+    family: Lecorvaisier
+  degrees: 
+    - PhD
+    - MSc
+    - BSc
+  orcid: 0000-0001-8201-5350
+  email: florian.lecorvaisier@gmail.com
+  url: https://flolecorvaisier.github.io
+date: "2025-03-31"
+date-modified: today
+embed-resources: true
+bibliography: references.bib
+categories: [tutorial]
+image: "thumbnail.jpg"
+description: "In this post, you will learn how to decipher the outputs of a simple linear regression model done using R."
+mainfont: Ubuntu
+---
+
+```{r}
+library(ggplot2)
+library(patchwork)
+```
+
+*This work relies heavily on @montgomery2021. To give the authors proper credit, they are cited multiple times throughout the document.*
+
+## Introduction
+
+The goal of the present document is to propose an introduction to the simple linear regression and its application in R. While many tutorials are available online on how to perform such a simple analysis, I found it quite hard to have an explanation not on *how* *to do* such analyzes but *how they work*. So this document is for all those who would like to know more about how stuff works.
+
+## What is a simple linear regression model?
+
+There are four words in the term "simple linear regression model", and each has its own importance. Here is a simple explanation for each of them, from the right to the left:
+
+-   A **model** is any way to try to approach some reality using some sort of proxy. We often think about models through a mathematical point of view but models can be more diverse than that. For example, mice are often used as models to understand more broadly how the immune system of vertebrates (including humans) works.
+
+-   In mathematics, the term **regression** indicates that we want to understand the link between one or multiple variables, which we often call the independent or explanatory variables, and another one called the dependent or response variable.
+
+-   The term **linear** indicates that the link between the response variable and the explanatory variable(s) follows a straight line.
+
+-   Finally, we call these models **simple** when there is only one explanatory variable.
+
+By convention, in most textbooks and classes the explanatory variable will be noted $x$ and the response variable will be noted $y$. The simple linear regression model is thus written
+
+$$
+y=\beta_0+\beta_1x + \varepsilon
+$$
+
+where $\beta_0$ is the intercept of the regression, $\beta_1$ is the slope of the regression, and $\varepsilon$ is the statistical error, i.e., the variability in $y$ that cannot be explained by $x$. This error is here to take into account the fact that the relation between $x$ and $y$ is most of the time not perfectly linear.
+
+Another way of writing a simple linear regression model (which I will now call SLRM - and pronounce "slurm" when I read it in my head) is
+
+$$
+y_i=\beta_0+\beta_1x_i + \varepsilon_i
+$$
+
+where $i$ indicates the $i$-th value for $x$, $y$ or $\varepsilon$. @montgomery2021 define the first formula as a population model and the second one as a sample regression model. The nuance is subtle and not of much interest here, but let's say that the sample represents, as its name suggests, a fraction of the population. Most of the time, we only have access to a sample and not the whole population, and this will thus change some of the calculations shown below.
+
+## Complete example
+
+### Data
+
+For the rest of this document, we will work on one particular example using the "rocket propellant data" proposed page 15 of @montgomery2021. Of course, the outcomes and results presented here should work just as fine with any other data set, including but not limited to those included in the different R packages you may find. The description of the data set is reproduced below
+
+> A rocket motor is manufactured by bonding an igniter propellant and a sustainer propellant together inside a metal housing. The shear strength of the bond between the two types of propellant is an important quality characteristic. It is suspected that shear strength is related to the age in weeks of the batch of sustainer propellant.
+
+In this example, the explanatory variable is the age of the sustainer propellant. This age, in weeks, has been measured twenty times and the values are reported below in the `x` variable.
+
+```{r}
+x = c(15.50, 23.75,  8.00, 17.00,  5.50, 19.00, 24.00,  2.50,  7.50, 11.00, 
+      13.00,  3.75, 25.00,  9.75, 22.00, 18.00,  6.00, 12.50,  2.00, 21.50)
+
+```
+
+On the other hand, the response variable is the shear strength, measured in psi. For each propellant age, a corresponding shear strength has been measured, so we also have twenty values, reported below in the `y` variable.
+
+```{r}
+y = c(2158.70, 1678.15, 2316.00, 2061.30, 2207.50, 1708.30, 1784.70, 2575.00, 2357.90, 2256.70,
+      2165.20, 2399.55, 1779.80, 2336.75, 1765.30, 2053.50, 2414.40, 2200.50, 2654.20, 1753.70)
+```
+
+A simple representation of the data can be found on @fig-1. A simple looks shows what we will demonstrate later: there appears to be a negative linear relation between the shear strength and the age of the propellant. In other words, it seems plausible that $\beta_1<0$.
+
+```{r}
+#| code-fold: true
+#| label: fig-1
+#| fig-cap: "Scatter diagram of shear strength versus propellant age."
+
+ggplot() +
+  geom_point(aes(x = x, y = y)) +
+  labs(x = "Age of propellant (weeks)", y = "Shear strength (psi)") +
+  theme_minimal()
+```
+
+### SLRM using R
+
+::: callout-note
+In this document, I will try to show how things work with a detailed step-by-step approach most of the time, but please take note that most of the time what I will show in multiple code lines can be done in one unique line without loss of readability.
+:::
+
+Let start by defining the formula of the SLRM we want to study. In R, it can be stored as a `formula` object where we link the `y` variable and the `x` variable with the use of a `~` character.
+
+```{r}
+slrm <- y ~ x
+cat(class(slrm))
+```
+
+The simplest way, in R, to test the regression of $y$ by $x$, is to simply use the `lm()` function, as shown below.
+
+```{r}
+mod <- lm(formula = slrm)
+```
+
+Then, the `summary()` function can be used to produce a "human-friendly" presentation of the results of the regression.
+
+```{r}
+summary(mod)
+```
+
+There are a lot of lines in this output so let's review them. The first two lines indicate
+
+```         
+Call:
+lm(formula = slrm)
+```
+
+They show the formula used in the model. Here, it is not really informative, for two reasons. The first one is that we now what the formula is, since we are the ones who wrote it. But note that it can be useful if, for example, you are reading some outputs without having access to the code which produced them. The second reason why it is not informative here is that we stored the formula in the `slrm` object, thus masking what the formula really is.
+
+Then we have
+
+```         
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-215.98  -50.68   28.74   66.61  106.76
+```
+
+These lines give some information about the **residuals** of the regression. The residuals are the difference between the observed values $y_i$ and the expected values $\hat y_i$. I will come back to these residuals later. The value under `Min` indicates the lowest value among the residuals, the `1Q` value indicates the first quartile of the distribution of the residuals, the `Median` value indicates the median value of the residuals, the `3Q` value indicates the third quartile of the distribution of the residuals and the `Max` value indicates the highest value among the residuals.
+
+The following lines are certainly the most interesting for anyone trying to analyze any data set using a SLRM. We have
+
+```         
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 2627.822     44.184   59.48  < 2e-16 ***
+x            -37.154      2.889  -12.86 1.64e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+This table gives different information about the estimation of the coefficients of the SLRM. Once again, we will come back to it later. The first line, starting with `(Intercept)`, gives us the information about the intercept of the regression, while the second line, starting with `x`, gives us the information about the slope (i.e., the coefficient associated with `x`). The first column, `Estimate`, gives us the estimated value for each coefficient; the second, `Std. Error`, gives us the standard errors associated with these estimates; the third one, `t value`, gives us the value of the $t$ statistics calculated for these estimates; and finally the last column, `Pr(>|t|)` gives us the $p$-value associated with the $t$ statistics. The asterisks shown after this last column refer to the bottom line (starting with `Signif. codes:`). They are used to give a visual information about the "range" of the $p$-values: if they are between 0 and 0.001 there are three asterisks; between 0.001 and 0.01 there are two asterisks; etc. It may be useful to make decisions regarding the results of your analyzes (rejecting or not your null hypothesis).
+
+Finally, we have a bunch of information reunited in the last three lines, as we have
+
+```         
+Residual standard error: 96.11 on 18 degrees of freedom
+Multiple R-squared:  0.9018,    Adjusted R-squared:  0.8964 
+F-statistic: 165.4 on 1 and 18 DF,  p-value: 1.643e-10
+```
+
+The first of these line gives the standard error of the residuals with the associated degrees of freedom. The second line shows two coefficients of determination associated with the regression. Finally, the last line indicates the results of an analysis of variance applied to the model.
+
+### *Les mains dans le cambouis*[^1]
+
+[^1]: *Les mains dans le cambouis* is a French expression meaning that you are going deep inside how something works; going beyond just using something but really understanding how it is built.
+
+The goal of this part is now to show you how to reproduce all the results R gave you automatically when you used the `lm()` then the `summary()` functions.
+
+#### Coefficients
+
+##### Estimates
+
+First, we will look at how the values in the coefficients table were obtained, and more precisely, how the estimates are calculated. The first estimate value that we can calculate is the slope. By convention, in statistics, estimates are written with a hat symbol on them. The estimate of the slope, which is the estimate of the coefficient associated with $x$, is thus $\hat\beta_1$. According to equation (2.11) in @montgomery2021, the least-square estimator[^2] of the slope is
+
+[^2]: In linear regression models, the estimators considered as "best" are those minimizing the sum of the squares of the residuals.
+
+$$
+\hat\beta_1=\frac{S_{xx}}{S_{xy}}
+$$
+
+where $S_{xx}$ is the corrected sum of squares of the $x_i$ and $S_{xy}$ is the corrected sum of cross products of $x_i$ and $y_i$.
+
+According to equation (2.9) in @montgomery2021, we have
+
+$$
+S_{xx}=\sum_{i=1}^n\left(x_i-\bar x\right)^2
+$$
+
+and, according to equation (2.10), we have
+
+$$
+S_{xy}=\sum_{i=1}^ny_i\left(x_i-\bar x\right)
+$$
+
+where $n$ is the number of observations (twenty in our example), and $\bar x$ is the mean of $x_i$. This mean value can be calculated with the formula
+
+$$
+\bar x=\frac{1}{n}\sum_{i=1}^nx_i
+$$
+
+Let's calculate all these values using R most basic functions. The number of observations can simply be obtained using the `length()` function on either the `x` or `y` object.
+
+```{r}
+n = length(y)
+```
+
+Now, we calculate the mean of $x$.
+
+```{r}
+xbar = 1 / n * sum(x)
+```
+
+Note that this value can be obtained more directly using the `mean()` function.
+
+```{r}
+xbar = mean(x)
+```
+
+We can now calculate the value of $S_{xx}$...
+
+```{r}
+Sxx = sum((x - xbar) ** 2)
+```
+
+...and the value of $S_{xy}$.
+
+```{r}
+Sxy = sum(y * (x - mean(x)))
+```
+
+Note that these values can be obtained more directly using the `var()` and `cov()` functions. Note that these functions are tricky because they calculates *unbiased* estimators of the variance and covariance of the *population*, while we need the variance and covariance of the *sample*. This means that we need to correct the values given by `var()` and `cov()` with a $\frac{1}{n-1}$ factor.
+
+```{r}
+Sxx = var(x) * (n - 1)
+Sxy = cov(x, y) * (n - 1)
+```
+
+Now that we have all that we need, we can calculate the value of $\hat\beta_1$.
+
+```{r}
+beta1hat = Sxy / Sxx
+```
+
+If we compare the value stored in the `beta1hat` object and the value given with the `summary()` function, we find that they are, as expected, equal.
+
+```{r}
+cat(summary(mod)$coefficients[2, 1])
+cat(beta1hat)
+```
+
+Now that we have the value of $\hat\beta_1$, it is easy to obtain the value of $\hat\beta_0$. According to equation (2.6) in @montgomery2021, we have
+
+$$
+\hat\beta_0=\bar y-\hat\beta_1\bar x
+$$
+
+where $\bar y$ is the mean of $y_i$. This mean value can be calculated with the formula
+
+$$ 
+\bar y=\frac{1}{n}\sum_{i=1}^ny_i 
+$$
+
+So, before calculating the value of $\hat\beta_0$, we need to calculate the value of $\bar y$.
+
+```{r}
+ybar = 1 / n * sum(y)
+```
+
+Note that once again this value can be obtained more directly using the `mean()` function.
+
+```{r}
+ybar = mean(y)
+```
+
+Now we can calculate the value of $\hat\beta_0$.
+
+```{r}
+beta0hat = ybar - beta1hat * xbar
+```
+
+For this coefficient too, if we compare the value stored in the `beta0hat` object and the value given with the `summary()` function, we find that they are equal.
+
+```{r}
+cat(summary(mod)$coefficients[1, 1]) 
+cat(beta0hat)
+```
+
+And voilà! We are all done for the values of the estimates. Now, we can continue with the second column of the coefficients table: the standard errors.
+
+##### Standard errors
+
+We will first calculate the value of the standard error for the slope. According to equation (2.14) in @montgomery2021, the variance of $\hat\beta_1$ is
+
+$$
+\text{var}\left(\hat\beta_1\right)=\frac{\sigma^2}{S_{xx}}
+$$
+
+where $\sigma^2$ is the variance of $y_i$. Unfortunately, we rarely have access to the true value of $\sigma^2$ and we must thus calculate an estimated value for it. According to equation (2.19) in @montgomery2021, an unbiased estimate of $\sigma^2$, $\hat\sigma^2$, is
+
+$$
+\hat\sigma^2 =\frac{SS_{Res}}{n-2}
+$$
+
+where $SS_{Res}$ is the residual sum of squares and $n-2$ is the number of degrees of freedom. In SLRM, the degrees of freedom is $n-2$ because there are two coefficient estimates in our model: $\hat\beta_0$ and $\hat\beta_1$. Note that $\hat\sigma^2$ is also called the residual mean square, noted $MS_{Res}$. According to equation (2.16) in @montgomery2021, we have
+
+$$
+SS_{Res}=\sum_{i=1}^n\left(y_i-\hat y_i\right)^2
+$$
+
+where $\hat y_i$ is the $i$-th estimated value of $y_i$. The values of $\hat y_i$ can be simply obtained using the values of $\hat\beta_0$, $\hat\beta_1$ and $x_i$. We have
+
+$$
+\hat y_i=\hat\beta_0+\hat\beta_1x_i
+$$
+
+We must thus calculate the values of $\hat y_i$ in R.
+
+```{r}
+yhat = beta0hat + beta1hat * x
+```
+
+Note that the values of $\hat y_i$ can also be obtained using the `predict()` function on the `mod` object.
+
+```{r}
+yhat = predict(mod)
+```
+
+Now we can calculate the value of $SS_{Res}$.
+
+```{r}
+SSRes = sum((y - yhat) ** 2)
+```
+
+From that, we can obtain the value of $\hat\sigma^2$.
+
+```{r}
+sigma2hat = SSRes / (n - 2)
+```
+
+And now, the value of $\text{var}\left(\hat\beta_1\right)$.
+
+```{r}
+varbeta1hat = sigma2hat / Sxx
+```
+
+Finally, to obtain the standard error reported in the coefficients table, we just need to obtain the square root of $\text{var}\left(\hat\beta_1\right)$ using the `sqrt()` function.
+
+```{r}
+sebeta1hat = sqrt(varbeta1hat)
+```
+
+If we compare the value stored in the `sebeta1hat` object and the value given with the `summary()` function, we find once again that they are equal.
+
+```{r}
+cat(sebeta1hat)
+cat(summary(mod)$coefficients[2, 2])
+```
+
+Now let's calculate the standard error of $\hat\beta_0$. According to equation (2.15) from @montgomery2021, the variance of $\hat\beta_0$ is
+
+$$
+\text{var}\left(\hat\beta_0\right)=\sigma^2\left(\frac{1}{n}+\frac{\bar x^2}{S_{xx}}\right)
+$$
+
+We will once again replace $\sigma^2$ by $\hat\sigma^2$ as the former is not available. We thus have everything we need ready and can calculate the value of $\text{var}\left(\hat\beta_0\right)$.
+
+```{r}
+varbeta0hat = sigma2hat * (1 / n + xbar ** 2 / Sxx)
+```
+
+And we simply obtain the standard error of $\hat\beta_0$ by using the `sqrt()` function over the `varbeta0hat` object.
+
+```{r}
+sebeta0hat = sqrt(varbeta0hat)
+```
+
+We can now compare the value stored in the `sebeta0hat` object and the value given with the `summary()` function and see that they are equal.
+
+```{r}
+cat(sebeta0hat)
+cat(summary(mod)$coefficients[1, 2])
+```
+
+##### $t$-values
+
+We're progressing. Now, the third column of the coefficients table contains the $t$-values. They are used to test if the values of the coefficients are significantly different from zero, but in reality a $t$ test could be used to test the difference between the estimated values of the coefficients and any theoretical value. According to equation (2.24) in @montgomery2021, the value of the $t$ statistics for coefficient $\hat\beta_1$ is
+
+$$
+t_0=\frac{\hat\beta_1-\beta_{10}}{\sqrt{MS_{Res}/S_{xx}}}
+$$
+
+where $\beta_{10}=0$ in the calculations used in the results of the `summary()` function. Also, as a reminder, $MS_{Res}=\hat\sigma^2$, so we can see that the denominator of the formula is simply the standard error of $\hat\beta_1$.
+
+We can thus simply calculate the value of $t_0$ using the values stored in `beta1hat` and `sebeta1hat`.
+
+```{r}
+t0beta1hat = beta1hat / sebeta1hat
+```
+
+When we compare the value in `t0beta1` with the value in the coefficients table, once again, they match.
+
+```{r}
+cat(t0beta1hat)
+cat(summary(mod)$coefficients[2, 3])
+```
+
+The value of $t_0$ for $\hat\beta_0$ is obtained the same way.
+
+```{r}
+t0beta0hat = beta0hat / sebeta0hat
+```
+
+We compare the values here too to find that they are equal.
+
+```{r}
+cat(t0beta0hat)
+cat(summary(mod)$coefficients[1, 3])
+```
+
+##### $p$-values
+
+The $p$-values are obtained using the $t_0$ values obtained above, which are supposed to follow a $t$ distribution with $n-2$ degrees of freedom. We use the `pt()` function with these values to obtain the distribution of the $t$ statistics and thus the $p$-value.
+
+First, we calculate the $p$-value for coefficient $\hat\beta_1$.
+
+```{r}
+pbeta1hat = 2 * pt(- abs(t0beta1hat), df = n - 2)
+```
+
+We see that it is the same value as the one shown in the coefficients table.
+
+```{r}
+cat(pbeta1hat)
+cat(summary(mod)$coefficients[2, 4])
+```
+
+Now, we calculate the $p$-value for coefficient $\hat\beta_0$.
+
+```{r}
+pbeta0hat = 2 * pt(- abs(t0beta0hat), df = n - 2)
+```
+
+Now, it is a bit trickier than previously. If you scroll back to the global output of `summary(mod)` shown above, you'll see that the $p$-value for coefficient $\hat\beta_0$ is `< 2e-16`. But if you print directly the value, you can see that you find another value, which is the same as the one we obtained manually.
+
+```{r}
+cat(pbeta0hat)
+cat(summary(mod)$coefficients[1, 4])
+```
+
+But why does R prints `< 2e-16` instead of the actual value? This is a bit off-topic but it is still good to know. As a computer program, R is fatally limited in the precision it can give to floats (i.e., decimal numbers). R stores a variable, called `.Machine`, "holding information on the numerical characteristics of the machine \[it\] is running on" (quote from the `.Machine` documentation). One of these "characteristics", called `double.eps`, is the "smallest positive floating-point number $x$ such that $1+x\neq1$". Let's see what is the value of this $x$ number.
+
+```{r}
+cat(.Machine$double.eps)
+```
+
+We see that this value is close to the `< 2e-16` given by the `summary()` function. Globally, below this `double.eps` threshold, R cannot efficiently discriminate between a value different from zero and zero. We can check it easily.
+
+```{r}
+cat(1 + pbeta0hat != 1)
+```
+
+```{r warning=FALSE, eval = FALSE, echo = FALSE}
+#| code-fold: true
+#| label: fig-2
+#| fig-cap: "Scatter diagram of shear strength versus propellant age."
+
+## Du code pour une idée de figure pour expliquer le moindre carré
+
+SSRes1 = round(sum((y - predict(mod)) ** 2), 3)
+
+ggplot() +
+  geom_segment(aes(x = x, y = y, yend = predict(mod)), color = "red") +
+  geom_point(aes(x = x, y = y)) +
+  geom_abline(slope = coef(mod)[2], intercept = coef(mod)[1], linetype = "dashed") +
+  geom_point(aes(x = x, y = predict(mod)), color = "red") +
+  # geom_hline(yintercept = mean(y)) +
+  # geom_vline(xintercept = mean(x)) +
+  annotate("text", x = 17.5, y = 2500, label = bquote(SS[Res]==.(SSRes1)), color = "red") +
+  labs(x = "Age of propellant (weeks)", y = "Shear strength (psi)") +
+  coord_cartesian(ylim = c(1600, 2700)) +
+  theme_minimal() -> p1
+
+beta1x = - 45
+beta0x = mean(y) - beta1x * mean(x)
+
+SSRes2 = round(sum((y - (beta0x + beta1x * x)) ** 2), 3)
+
+ggplot() +
+  geom_segment(aes(x = x, y = y, yend = beta0x + beta1x * x), color = "blue") +
+  geom_point(aes(x = x, y = y)) +
+  geom_abline(slope = beta1x, intercept = beta0x, linetype = "dashed") +
+  geom_point(aes(x = x, y = beta0x + beta1x * x), color = "blue") +
+  # geom_hline(yintercept = mean(y)) +
+  # geom_vline(xintercept = mean(x)) +
+  annotate("text", x = 17.5, y = 2500, label = bquote(SS[Res]==.(SSRes2)), color = "blue") +
+  labs(x = "Age of propellant (weeks)", y = "Shear strength (psi)") +
+  coord_cartesian(ylim = c(1600, 2700)) +
+  theme_minimal() -> p2
+
+p1 + p2 + plot_layout(axis_titles = "collect")
+```
+
+#### Residuals
+
+Now that we know the values of $\hat\beta_0$ and $\hat\beta_1$, it is possible to calculate the values of the residuals. The residuals, sometimes noted $e_i$, correspond to the difference between the observed values of the response variable, $y_i$, and the estimated values, $\hat y_i$, as shown in equation (2.12) from @montgomery2021. We have
+
+$$
+e_i=y_i-\hat y_i
+$$
+
+It can easily be obtained in R with the values we alreay have calculated.
+
+```{r}
+e = y - yhat
+```
+
+The residuals can also be easily obtained using the `residuals()` function over the `mod` object.
+
+```{r}
+e = residuals(mod)
+```
+
+As a reminder, in the summary there were a few information about the residuals, mostly in the first lines. The first information we get is the minimal value of the residuals. Before accessing it, let's have a look at the residuals. In the following code chunk, we sort (from the lowest to the highest) and print the values of the residuals.
+
+```{r}
+esort = sort(e)
+cat(round(esort, 2))
+```
+
+We immediately see that the lowest value of $e_i$ is `r round(esort, 2)[1]`, as we saw in the summary of the SLRM. We can also access this value using the `min()` function.
+
+```{r}
+minres =  min(e)
+cat(round(minres, 2))
+```
+
+The second value is the first quartile or 25th percentile. The easiest way to obtain it is to used the `quantile()` function with `probs = .25`.
+
+```{r}
+Q1res = quantile(e, probs = .25)
+cat(round(Q1res, 2))
+```
+
+Next, we have the median. We can access it using the `median()` function.
+
+```{r}
+medres = median(e)
+cat(round(medres, 2))
+```
+
+Note that we can also access it using the `quantile()` function with `probs = .5`.
+
+```{r}
+medres = quantile(e, probs = .5)
+cat(round(medres, 2))
+```
+
+Then we have the third quarter or 75th percentile. The easiest way to obtain it is to used the `quantile()` function with `probs = .75`.
+
+```{r}
+Q3res = quantile(e, probs = .75)
+cat(round(Q3res, 2))
+```
+
+Finally, we have the maximal value of the residuals. Looking at the `esort` object produced before, we can manually find that the value is `r round(esort, 2)[n]`. We can also obtain it using the `max()` function.
+
+```{r}
+maxres = max(e)
+cat(round(maxres, 2))
+```
+
+And that's everything for the top of the summary. Now, let's have a look at the first line of the three at the bottom of the summary. The residual standard error, also called the standard error of the regression, is simply the square root of the residual mean square $\hat\sigma^2$.
+
+```{r}
+sigma = sqrt(sigma2hat)
+```
+
+We can check that we obtain the same value as the one given in the summary.
+
+```{r}
+cat(sigma)
+cat(summary(mod)$sigma)
+```
+
+Note that the $n-2=18$ degrees of freedom given in the same line are the one used before, notably to calculate the value of $\hat\sigma^2$.
+
+#### Coefficient of determination
+
+On the next line out of the last three, we see two determination coefficients. A determination coefficient represents the proportion of variation in $y$ explained by the regressor $x$. According to equation (2.47) in @montgomery2021, the coefficient of determination in a SLRM is
+
+$$
+R^2=1-\frac{SS_{Res}}{SS_T}
+$$
+
+where $SS_T$ is the total variability in the observations. We have
+
+$$
+SS_T=\sum_{i=1}^n\left(y_i-\bar y\right)
+$$
+
+We can easily calculate it in R.
+
+```{r}
+SST = sum((y - ybar) ** 2)
+```
+
+You can see on @fig-3 a graphical explanation of how the values of $SS_T$ and $SS_{Res}$ are obtained.
+
+```{r warning=FALSE}
+#| code-fold: true
+#| label: fig-3
+#| fig-cap: "Scatter diagram of shear strength versus propellant age. (**A**) The dashed line follows the equation $y=\\bar y$ and the blue segments indicate the distances between the observed values of $y$ (black dots) and the expected values if there was no variance in $y$ (blue dots). (**B**) The dashed line follows the equation $y=\\hat\\beta_0+\\hat\\beta_1x$ and the red segments indicate the distances between the observed values of $y$ (black dots) and the expected values predicted by the regression (red dots)."
+
+SST = sum((y - ybar) ** 2)
+
+ggplot() +
+  geom_hline(yintercept = ybar, linetype = "dashed") +
+  geom_segment(aes(x = x, y = y, yend = mean(y)), color = "blue") +
+  geom_point(aes(x = x, y = y)) +
+  geom_point(aes(x = x, y = ybar), color = "blue") +
+  labs(x = "Age of propellant (weeks)", y = "Shear strength (psi)") +
+  annotate("text", x = 17.5, y = 2500, label = bquote(SS[T]==.(SST)), color = "blue") +
+  theme_minimal() -> p1
+
+SSres = sum((y - yhat) ** 2)
+
+ggplot() +
+  geom_abline(slope = coef(mod)[2], 
+              intercept = coef(mod)[1], linetype = "dashed") +
+  labs(x = "Age of propellant (weeks)", y = "Shear strength (psi)") +
+  geom_segment(aes(x = x, y = y, yend = predict(mod)), color = "red") +
+  geom_point(aes(x = x, y = y)) +
+  geom_point(aes(x = x, y = yhat), color = "red") +
+  annotate("text", x = 17.5, y = 2500, label = bquote(SS[Res]==.(SSRes)), color = "red") +
+  theme_minimal() -> p2
+
+p1 + p2 + plot_layout(axis_titles = "collect") + plot_annotation(tag_levels = 'A')
+```
+
+We can now obtain the value of $R^2$.
+
+```{r}
+R2 = 1 - SSRes / SST
+```
+
+We can see that this value matches the "multiple R-squared" in the summary.
+
+```{r}
+cat(R2)
+cat(summary(mod)$r.squared)
+```
+
+Now, how is the "adjusted R-squared" obtained? And, first of all, what is it? Well, the adjusted R-squared, which we will call $R^2_{Adj}$, is most useful in multiple linear regression models than in SLRM. It can be used to compare nested models and decide if adding a new variable in the model is really useful. Without going into details, the value of $R^2$ will necessarily increase when adding a new variable while the value of $R^2_{Adj}$ will only increase if adding the new variable reduces the residual mean square, $\hat\sigma^2$. According to equation (3.27) in @montgomery2021, we have
+
+$$
+R^2_{Adj}=1-\frac{SS_{Res}/\left(n-p\right)}{SS_T/\left(n-1\right)}
+$$
+
+where $p$ is the number of coefficients estimated in the model. In a SLRM, we have $p=2$ (except in the particular case where the intercept is null by construction).
+
+```{r}
+p = 2
+```
+
+We can now calculate the value of $R^2_{Adj}$.
+
+```{r}
+R2Adj = 1 - (SSres / (n - p)) / (SST / (n - 1))
+```
+
+And we find that this value is the same as the one reported in the summary.
+
+```{r}
+cat(R2Adj)
+cat(summary(mod)$adj.r.squared)
+```
+
+#### Analysis of variance
+
+Finally, the last line of the summary is the result of an analysis of variance with the $F$-statistic, the associated degrees of freedom, and the $p$-value. According to equation (2.36) in @montgomery2021, the value of the $F$-statistic, noted $F_0$, is
+
+$$
+F_0=\frac{SS_R/df_R}{SS_{Res}/df_{Res}}
+$$
+
+where $df_{Res}=n-2$ and thus $SS_{Res}/df_{Res}=\hat\sigma^2$, $SS_R$ is the regression sum of squares (i.e., the variation explained by the regression) and $df_R=1$ in SLRM is the associated degree of freedom. According to equation (2.34) in @montgomery2021, we have
+
+$$
+SS_R = \hat\beta_1S_{xy}
+$$
+
+but we can simply note that $SS_R=SS_T-SS_{Res}$. We see that $df_R=1$ (first degree of freedom reported in the summary) because $SS_R$ is determined solely by $\hat\beta_1$ while $df_{Res}=n-2$ (second degree of freedom reported in the summary) because both $\hat\beta_0$ and $\hat\beta_1$ are used in calculating the values of $y_i-\hat y_i$ (see @montgomery2021 for more details).
+
+We fix the values of $df_R$ and $df_{Res}$.
+
+```{r}
+dfR = 1
+dfRes = n - 2
+```
+
+We calculate the value of $SS_R$.
+
+```{r}
+SSR = beta1hat * Sxy
+```
+
+Finally, we can calculate the value of $F_0$.
+
+```{r}
+F0 = (SSR / dfR) / (SSRes / dfRes)
+```
+
+Once more, if we compare the value obtained manually with the value shown in the summary, we find out that they are the same.
+
+```{r}
+cat(F0)
+cat(summary(mod)$fstatistic[1])
+```
+
+The value of $F_0$ follows the $F_{df_R,df_{Res}}$ distribution. From that, we can easily find the associated $p$-value using the `pf()` function.
+
+```{r}
+pval = 1 - pf(F0, dfR, dfRes)
+```
+
+The value is the same as the one shown in the summary (actually, it is not possible to print the value directly out of the summary). Note that the $p$-value is the same as the one found for the $t$-test of coefficient $\hat\beta_1$.
+
+```{r}
+cat(pval)
+```
+
+## Conclusion
+
+In this document, I tried to explain how the different outputs given by R when working on a single linear regression model are mathematically obtained. The goal was not to demonstrate in details how the different formulas used are constructed. For those interested, I redirect them to @montgomery2021, which I heavily used to produce this work.
+
+## Session info
+
+```{r}
+sessionInfo()
+```

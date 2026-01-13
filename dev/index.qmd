@@ -1,0 +1,16 @@
+---
+title: "Florian Lecorvaisier's website"
+embed-resources: true
+title-block-banner: darkolivegreen
+mainfont: Ubuntu
+format: 
+  html: 
+    header-includes: |
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+---
+
+Hello! My name is Florian Lecorvaisier. I am a French researcher mostly interested in eco-epidemiology, with a particular emphasis on the role of vaccines on the evolution and ecology of infectious diseases. I am currently employed as an assistant engineer in the [Laboratoire de Biométrie et Biologie Evolutive](https://lbbe.univ-lyon1.fr/en/annuaires-des-membres/lecorvaisier-florian) in Villeurbanne, France.
+
+You can find a detailed list of my publications in the [CV](/cv.html) section of this website.
