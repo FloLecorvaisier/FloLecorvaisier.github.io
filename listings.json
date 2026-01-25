@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/speeding-up-your-r-scripts/index.html",
       "/posts/marie-curie/index.html",
       "/posts/simple-linear-regression/index.html"
     ]

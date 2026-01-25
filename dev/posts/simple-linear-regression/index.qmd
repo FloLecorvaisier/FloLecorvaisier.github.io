@@ -19,7 +19,7 @@ author:
   email: florian.lecorvaisier@gmail.com
   url: https://flolecorvaisier.github.io
 date: "2025-03-31"
-date-modified: today
+date-modified: "2025-03-31"
 embed-resources: true
 bibliography: references.bib
 categories: [tutorial]

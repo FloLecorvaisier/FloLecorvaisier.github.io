@@ -19,7 +19,7 @@ author:
   email: florian.lecorvaisier@gmail.com
   url: https://flolecorvaisier.github.io
 date: "2025-06-30" 
-date-modified: today
+date-modified: "2025-06-30"
 embed-resources: true
 categories: [miscellaneous]
 image: "thumbnail.jpg"

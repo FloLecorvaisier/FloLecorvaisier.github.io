@@ -1,0 +1,148 @@
+---
+title: "Speeding up your R scripts"
+title-block-banner: darkolivegreen
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 4
+editor: visual
+author: 
+  name: 
+    given: Florian
+    family: Lecorvaisier
+  degrees: 
+    - PhD
+    - MSc
+    - BSc
+  orcid: 0000-0001-8201-5350
+  email: florian.lecorvaisier@gmail.com
+  url: https://flolecorvaisier.github.io
+date: "2026-01-25"
+date-modified: "2026-01-25"
+embed-resources: true
+bibliography: references.bib
+categories: [tips and tricks]
+image: "thumbnail.jpg"
+description: "In this post, I will share a few tips on how to speed up the execution of your R scripts."
+mainfont: Ubuntu
+---
+
+## Introduction
+
+Why speeding up your code? If it works and is readable, why bothering optimizing the execution time? For most scripts, even it is comprises hundreds of lines of code, they will execute in a matter of seconds maximum. Generally, rendering figures is the most time-consuming part of R scripts, and even this is not that long.
+
+Now, some people – me, for example – are working on code scripts that may take dozen of minutes or even hours to execute. For example, during my PhD, I used `jagsUI` to run MCMC simulations that took a few minutes to run, and had to run *a lot* of these simulations. Now, at the time I write this post, I am working on an individual-based model of the dynamics of African swine fever in a population of wild boars. In this model, what happens to *each boar* is modeled *each day*. Thus, there are a lot of things at work and it takes some time to run one simulation (sometimes, more than two hours, and the model is not finished yet), and reducing the computing time is interesting for me for multiple reasons:
+
+-   my results are available sooner;
+
+-   less computing time means less resources used;
+
+-   I work on a shared computing cluster, so the less time my simulations run, the better for everyone wanting to use the cluster.
+
+For all these reasons, I spent (and continue to spend) quite some time trying to speed up my code. I found multiple tricks, some well known, some more obscure, some useful for everyone and some useful only in specific cases. Here, I would like to share some of these tricks.
+
+## General tips
+
+### Sequences
+
+In R, there are multiple ways to produce a sequence of numbers. The easiest one is to create a vector with the `c()` function.
+
+```{r}
+x1 = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+```
+
+On the example above, we have a regular sequence of integers from one to ten. In this specific case, this is not the optimal way to create the sequence, and most of R users would rather use
+
+```{r}
+x2 = seq(1, 10, 1)
+```
+
+or, even simpler,
+
+```{r}
+x3 = 1:10
+```
+
+Now, are these two lines of code identical? They produce the same results, as shown below.
+
+```{r}
+x2 == x3
+```
+
+So you could think that both techniques could be used interchangeably. And you would not be wrong. But try running these functions a lot of times, and you will see strong differences appear. For the sake of the example, I will use larger sequences sizes.
+
+```{r cache=TRUE}
+system.time(
+  for (i in 1:1e4) {
+    seq(1, 1e5, 1)
+  }
+)
+
+system.time(
+  for (i in 1:1e8) {
+    1:1e5
+  }
+)
+```
+
+In the code above, I asked 10,000 times for a sequence ranging from one to 100,000 using `seq()`. On my PC, R delivered in 5.25 seconds. Then I asked 100,000,000 times for the same sequence, but using the simpler notation, and it delivered in less than half the time (for a much higher number of sequences).
+
+Obviously, you will probably rarely need to ask for this many sequences, and my example only works for consecutive sequences of integers[^1], but hey it may help someone out there.
+
+[^1]: You can transform the outputs of the sequence, for example `1:1e5 / 2` but doing so rises the execution time, and the amount of time lost is linked to the complexity of the transformation.
+
+### Loops
+
+There is a "legend" among R users that using `for` loops slows down your code a lot, and that you should rather use `*apply()` functions to make your code run faster. I would like to bring some nuance to that. Consider the example below.
+
+```{r cache=TRUE}
+x1 = x2 = 1:1e6
+
+system.time(
+  for (i in 1:length(x1)) {
+    x1[i] = x1[i] * 2
+  }
+)
+
+system.time(
+  {x2 = sapply(x2, function(i) i * 2)}
+)
+```
+
+In this case, I first used a `for` loop to multiply by two the values in vector `x1`. Then, I did the exact same operation with vector `x2` but using the `sapply()` function. We see below that the results are exactly the same, but using the `for` loop was 20 times faster!
+
+```{r}
+table(x1 == x2)
+```
+
+But there are indeed cases where using a function from the `*apply()` family really speeds up your code. In the example below, I create a data frame with 10,000,000 values (`df$x`) distributed in 1,000 categories (`df$y`). Then, for each category, I calculate the average value of `df$x` using either a `for` loop or the `tapply()` function.
+
+```{r cache=TRUE}
+set.seed(42)
+
+df = data.frame(
+  x = runif(1e7),
+  y = sample(1:1e3, size = 1e5, replace = T)
+)
+
+system.time(
+  for (i in unique(df$y)) {
+    mean(df$x[df$y == i])
+  }
+)
+
+system.time(
+  tapply(df$x, df$y, mean)
+)
+```
+
+We can see using the `tapply()` function is way, *way* faster than using the loop. So, in this case, I would strongly encourage using the `tapply()` function, especially if you must it on really large data sets.
+
+So, in the end, when should you use a loop and when should you use a `*apply()` function? I do not know! It seems to depend on what exactly you are doing, so I encourage you to try both approaches if you see your code getting slower.
+
+## Session info
+
+```{r}
+sessionInfo()
+```
