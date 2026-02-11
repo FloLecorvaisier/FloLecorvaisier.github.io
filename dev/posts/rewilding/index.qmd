@@ -1,0 +1,43 @@
+---
+title: "Rewilding"
+title-block-banner: darkolivegreen
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 4
+editor: visual
+author: 
+  name: 
+    given: Florian
+    family: Lecorvaisier
+  degrees: 
+    - PhD
+    - MSc
+    - BSc
+  orcid: 0000-0001-8201-5350
+  email: florian.lecorvaisier@gmail.com
+  url: https://flolecorvaisier.github.io
+date: "XXXX-XX-XX"
+date-modified: "XXXX-XX-XX"
+embed-resources: true
+bibliography: references.bib
+categories: [tips and tricks]
+image: "thumbnail.jpg"
+description: "In this post, I will share a few tips on how to speed up the execution of your R scripts."
+mainfont: Ubuntu
+---
+
+This blog post was written in the context of the "Ma Petite Planète" done in the LBBE in January-February 2026. Here, I will try to explain the concept of rewilding, give a few example, and explain how it can be used as a tool for species conservation and ecosystems recovery.
+
+## What is rewillding?
+
+Rewilding is now a popular term among conservation biologists: as of February the 11th of 2026, searching "rewilding" in the Web of Science Core Collection returns 1,457 results. And because it is popular, multiple definitions have been proposed. Here, I will use the definition proposed by @carver_guiding_2021:
+
+> Rewilding is the process of rebuilding, following major human disturbance, a natural ecosystem by restoring natural processes and the complete or near complete food web at all trophic levels as a self-sustaining and resilient ecosystem with biota that would have been present had the disturbance not occured.
+
+Let's analyze this definition. First, "the process of rebuilding" implies degradation, or even destruction. Ecosystems are dynamics, one day they thrive and the other they are completely destroyed: think about a flood, a volcanic eruption... This "dynamic" aspect of the life of ecosystems might not be completely understood/accepted by the public and even by scientists: we sometimes want to protect ecosystems or species that are doomed to go extinct even without the participation of humans.
+
+But rewilding focuses on degradation happening "following major human disturbance". While natural disasters are not morally questionable, human activities are. Most of what we do is detrimental to ecosystems to at least a certain extant. Walk in a meadow and you may crush a rare flower. Build a gigantic city and you will pollute the local environment for centuries. 
+
+Theyre are multiple ways to restore an ecosystem. Picking up trash in a forest or on a beach is one way to do it. ...
