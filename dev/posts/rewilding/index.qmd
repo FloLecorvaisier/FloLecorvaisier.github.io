@@ -18,13 +18,13 @@ author:
   orcid: 0000-0001-8201-5350
   email: florian.lecorvaisier@gmail.com
   url: https://flolecorvaisier.github.io
-date: "XXXX-XX-XX"
-date-modified: "XXXX-XX-XX"
+date: "2026-02-16"
+date-modified: "2026-02-16"
 embed-resources: true
 bibliography: references.bib
-categories: [tips and tricks]
+categories: [miscellaneous]
 image: "thumbnail.jpg"
-description: "In this post, I will share a few tips on how to speed up the execution of your R scripts."
+description: "Let's talk a bit about rewilding."
 mainfont: Ubuntu
 ---
 
@@ -34,10 +34,26 @@ This blog post was written in the context of the "Ma Petite Planète" done in th
 
 Rewilding is now a popular term among conservation biologists: as of February the 11th of 2026, searching "rewilding" in the Web of Science Core Collection returns 1,457 results. And because it is popular, multiple definitions have been proposed. Here, I will use the definition proposed by @carver_guiding_2021:
 
-> Rewilding is the process of rebuilding, following major human disturbance, a natural ecosystem by restoring natural processes and the complete or near complete food web at all trophic levels as a self-sustaining and resilient ecosystem with biota that would have been present had the disturbance not occured.
+> Rewilding is the process of rebuilding, following major human disturbance, a natural ecosystem by restoring natural processes and the complete or near complete food web at all trophic levels as a self-sustaining and resilient ecosystem with biota that would have been present had the disturbance not occurred.
 
 Let's analyze this definition. First, "the process of rebuilding" implies degradation, or even destruction. Ecosystems are dynamics, one day they thrive and the other they are completely destroyed: think about a flood, a volcanic eruption... This "dynamic" aspect of the life of ecosystems might not be completely understood/accepted by the public and even by scientists: we sometimes want to protect ecosystems or species that are doomed to go extinct even without the participation of humans.
 
-But rewilding focuses on degradation happening "following major human disturbance". While natural disasters are not morally questionable, human activities are. Most of what we do is detrimental to ecosystems to at least a certain extant. Walk in a meadow and you may crush a rare flower. Build a gigantic city and you will pollute the local environment for centuries. 
+But rewilding focuses on degradation happening "following major human disturbance". While natural disasters are not morally questionable, human activities are. Most of what we do is detrimental to ecosystems to at least a certain extant. Walk in a meadow and you may crush a rare flower. Build a gigantic city and you will pollute the local environment for centuries.
 
-Theyre are multiple ways to restore an ecosystem. Picking up trash in a forest or on a beach is one way to do it. ...
+There are multiple ways to restore an ecosystem. Picking up trash in a forest or on a beach is one way to do it. Rewilding is another one, with nature at the core of the process. The most thriving example of rewilding is the reintroduction of big mammals where human took them off. For example, in France, bear were reintroduced in the Pyrenees. Reintroducing big mammals, and big predators particularly, indeed help restore food webs and trophic networks. With more wolves in France, we would need less hunting to maintain the wild boar populations, for example.
+
+It is well documented that humans are prone to eliminate big mammals wherever they live. This happens whether because of hunting practices for food (giant sloths, mammoths, woolly rhinoceroses...) or to protect human populations or belongings (wolves, bears...). If humans did not invade most ecosystems, it is probable that these species would still exist today (but note that because of important climatic changes unrelated to human activities, is is still possible that some species would have gone extinct anyway).
+
+## A few examples
+
+The Netherlands are one of the most active countries in Europe regarding rewilding. After the agricultural revolution following World War II, many natural ecosystems were destroyed, but later on some people started to believe that it was possible to save those ecosystems, to take them back to what they were before. In nature reserve of Oostvaardersplassen, it was decided to reintroduce multiple herbivorous species like the red deer or "wild" breeds of horses and cows. The idea was to restore primitive meadows that would have been typical in Europe thousands of years ago. This project, which started more than thirty years ago, is considered a mild success, since many individuals die each winter due to a lack of food in the Oostvaardersplassen.
+
+Another example, which may look a little more crazy, is the "Pleistocene park". In the northeast of Siberia, a Russian scientist named Sergey Zimov is trying to reintroduce big mammals to "replace" the megafauna that lived here 12,000 years ago. Zimov strongly believe that rewilding is part of the solution against the global warming, as big herbivorous may help restore the steppe – an important carbon well – that existed here before. Zimov and, since 2014, his son, did tremendous efforts to import animals from all over the world, in one of the most remote places in the world.
+
+In Mauritius, where many species went extinct because of human activities, rewilding started with one idea: remove all the animal species imported by Europeans since the 17^th^ century. But this led to an unexpected result: because grass eaters were removed, exotic plant species began to thrive and replace local species. The solution that was used to solve this problem was... to introduce an exotic species of giant tortoise. The idea did not please everyone, notably the International Union for the Conservation of Nature (IUCN), but the local rewilding association managed to explain that if the tortoise became a problem it would be easy to remove it. Today, tortoises ate most of the exotic plants, and the ecosystem thrives again.
+
+## Conclusion
+
+Rewilding is an appealing concept: using the nature to heal the nature. But sometimes it is hard to put into practice, and results may go in unexpected directions. (Re)introducing species may have dramatic consequences on ecosystems, like removing other species. Nowadays, there are many scientists and conservationists try to understand how rewilding can be put into practice, if and when it is a viable solution, etc. The future will tell if it is mostly a sweet dream, having a new megafauna in Siberia and large meadows in Europe, or if it can help us restore the ecosystems we spent decade destroying.
+
+For those interested in the topic of rewilding, I can suggest you to subscribe to the newsletter of the British Ecological Society's [rewilding group](https://www.britishecologicalsociety.org/content/rewilding-group/) (communications are made in English). I can also recommend the books [*Réensauvager la nature pour sauver la planète*](https://www.epflpress.org/produit/1061/9782889154777/reensauvager-la-nature-pour-sauver-la-planete) and [*L'Europe réensauvagée – Vers un nouveau monde*](https://actes-sud.fr/catalogue/leurope-reensauvagee-015980), both in French.
