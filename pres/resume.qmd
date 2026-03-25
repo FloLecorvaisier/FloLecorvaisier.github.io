@@ -1,0 +1,235 @@
+---
+title: "Making an academic resume"
+subtitle: "Student seminar"
+author: "Florian Lecorvaisier & Emma Acacia"
+date: "2026-03-18"
+embed-resources: true
+fontsize: 24pt
+format: 
+  revealjs:
+    theme: dracula
+---
+
+# Introduction
+
+## After-thesis academic jobs
+
+Just after the end of the thesis:
+
+- Postdoc positions
+
+- Research engineer
+
+- Temporary teaching and research assistant
+
+Later in the career (but technically possible just after the thesis):
+
+- Research assistant
+
+- Assistant professor
+
+**Each type of position (and each position) has its specificities!**
+
+## General information
+
+Some general tips:
+
+- Do not focus too much on the design
+
+- Academic CVs are often >1 page long (***but read the offer's instructions***)
+
+- Don't hesitate to repeat yourself beteen the CV and the cover letter
+
+- Make a general CV but alter it for each offer to fit it at best
+
+# General sections
+
+## Contact
+
+- Name
+- Grade (PhD., MSc., BSc.)
+- Physical and email addresses
+- (Phone number)
+- Social networks: ORCID, Bluesky...
+- 2 or 3 key words to describe the application
+- 1 sentence to describe your profile/interests
+
+***No photo*** (can be discussed, not expected for international applications, it is a French habit)
+
+## Skills
+
+Add categories according to the position:
+
+- Programming (Python, R, C++, MySQL…)
+- Spoken languages (***English***, ***French***, local languages...)
+- Practical skills (molecular biology, statistical analyses...)
+- Specific tools (LaTeX, QGIS...)
+- Briefly show the link between these skills and the position (and detail in the cover letter).
+
+## Education
+
+Include relevant diplomas, such as:
+
+- Bachelor degree
+- Master degree
+- Doctorate
+- Engineering degree
+
+For each, include the title, the university, the date and the ***relevant courses***.
+
+Also include relevant formations + its duration (nb of hours, days):
+
+- “Seasonal” schools
+- Workshops
+- ...
+
+## Work/research history
+
+Filter for relevant elements:
+
+- Research internships
+- Doctoral contracts
+- Engineering/technical contracts
+- Non-academic relevant contracts/internships
+
+Include the title, the institution, the dates, and a ***short description of your activities***.
+
+# Academia-specific sections
+
+## Teaching experience
+
+Mostly relevant for teaching-related positions (ATER/MCU). Include:
+
+- Number of hours
+- Years
+- ***Type of courses*** (short description)
+- Level (bachelor, master...)
+
+## Conferences
+
+Include your participations to conferences with:
+
+- The name of the conference
+- The date
+- The place (city + country)
+- The nature of the participation (poster or oral presentation)
+
+## Awards & grants
+
+If you received any “important” award or grant, notify it with:
+
+- The name of the award/grant
+- The ***amount of money for grants***
+- The year
+- The ***goal of the grant/reason of the award***
+
+## Publication list
+
+Generally placed at the end of the CV, with no length limit. You may include:
+
+- Peer-reviewed papers:
+  - Published
+  - In press (accepted but not published)
+  - In prep (or to be more specific: under review, submitted, advanced draft), you can specify the journal, the approx. submission date...
+- Technical reports
+- Conference articles
+- Published academic manuscripts (thesis)
+- ...
+
+## Supervision & responsibilities
+
+For more advanced researchers, it is expected to include:
+
+- Internship/thesis supervision activities
+- Conference organisation committee responsibilities
+- Editorial activities
+- Doctoral/other engagement activities
+- ...
+
+# Bonus sections
+
+## Other activities and trivia
+
+Include everything relevant or that you want to tell about yourself, such as:
+
+- Science popularization/outreach activities
+- Software development
+- Interviews
+- Associative activities (Les Pinsons MigRateurs hehe)
+- Hobbies
+- Other activities
+- ...
+
+# Cheat sheet
+
+
+```{r dev.args=list(bg="transparent")}
+#| fig-format: svg
+
+library(ggplot2)
+
+big.f = 5
+small.f = 4
+
+mov = 1/6
+
+ggplot() +
+  geom_rect(aes(xmin = 0, ymin = 0, xmax = 5, ymax = -1), fill = "#FFFFE0") + # General tips
+  geom_rect(aes(xmin = 0, ymin = -1, xmax = 5, ymax = -2), fill = "#FFFFE0") +
+  geom_rect(aes(xmin = 0, ymin = -2, xmax = 5, ymax = -3), fill = "#FFFFE0") +
+  geom_rect(aes(xmin = 0, ymin = -3, xmax = 5, ymax = -4), fill = "#FFFFE0") +
+  geom_rect(aes(xmin = 0, ymin = -4, xmax = 5, ymax = -5), fill = "#FFFFE0") +
+  
+  geom_rect(aes(xmin = 5, ymin = 0, xmax = 10, ymax = -1), fill = "#FFF0F5") + # General tips
+  geom_rect(aes(xmin = 5, ymin = -1, xmax = 10, ymax = -2), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -2, xmax = 10, ymax = -3), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -3, xmax = 10, ymax = -4), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -4, xmax = 10, ymax = -5), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -5, xmax = 10, ymax = -6), fill = "#FFF0F5") +
+
+  geom_rect(aes(xmin = 10, ymin = 0, xmax = 15, ymax = -1), fill = "#FFDAB9") + # General tips
+  geom_rect(aes(xmin = 10, ymin = -1, xmax = 15, ymax = -2), fill = "#FFDAB9") +
+
+  geom_segment(aes(x = 0, xend = 15, y = 0), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 15, y = -1), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 15, y = -2), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -3), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -4), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -5), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -5), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 5, xend = 10, y = -6), color = "grey", linetype = "dashed") +
+
+  geom_segment(aes(x = 0, y = 0, yend = -5), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 5, y = 0, yend = -6), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 10, y = 0, yend = -6), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 15, y = 0, yend = -2), color = "grey", linetype = "dashed") +
+
+  geom_text(aes(x = 2.5, y = -0.5, label = "General sections"), size = big.f, fontface = 4) +
+  geom_text(aes(x = 2.5, y = -1.5 + mov, label = "Contacts"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -1.5 - mov, label = "social networks, email..."), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 2.5, y = -2.5 + mov, label = "Skills"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -2.5 - mov, label = "languages, programming, tools..."), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 2.5, y = -3.5 + mov, label = "Education"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -3.5 - mov, label = "diplomas & formations"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 2.5, y = -4.5 + mov, label = "Work/research history"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -4.5 - mov, label = "list of positions"), size = small.f, fontface = "italic", color = "grey60") +
+
+  geom_text(aes(x = 7.5, y = -0.5, label = "Academica-specific sections"), size = big.f, fontface = 4) +
+  geom_text(aes(x = 7.5, y = -1.5 + mov, label = "Teaching experience"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -1.5 - mov, label = "number & nature of courses"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -2.5 + mov, label = "Conferences"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -2.5 - mov, label = "list of posters/oral presentations"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -3.5 + mov, label = "Awards & grants"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -3.5 - mov, label = "amount, nature, reason..."), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -4.5 + mov, label = "Publication list"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -4.5 - mov, label = "all your scientific publications"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -5.5 + mov, label = "Supervision & responsibilities"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -5.5 - mov, label = "interns, journal editor..."), size = small.f, fontface = "italic", color = "grey60") +
+
+  geom_text(aes(x = 12.5, y = -0.5, label = "Bonus sections"), size = big.f, fontface = 4) +
+  geom_text(aes(x = 12.5, y = -1.5 + mov, label = "Other activities & trivia"), size = big.f) +
+  geom_text(aes(x = 12.5, y = -1.5 - mov, label = "science popularization..."), size = small.f, fontface = "italic", color = "grey60") +
+
+  theme_void(base_family = "Ubuntu")
+
+```
