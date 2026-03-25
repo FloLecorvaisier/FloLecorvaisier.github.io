@@ -1,0 +1,105 @@
+---
+title: "Making an academic resume"
+title-block-banner: darkolivegreen
+format: 
+  html:
+    toc: true
+    toc-location: left
+    toc-depth: 4
+editor: visual
+author: 
+  name: 
+    given: Florian
+    family: Lecorvaisier
+  degrees: 
+    - PhD
+    - MSc
+    - BSc
+  orcid: 0000-0001-8201-5350
+  email: florian.lecorvaisier@gmail.com
+  url: https://flolecorvaisier.github.io
+date: "2026-03-28"
+date-modified: "2026-03-28"
+embed-resources: true
+categories: [tips and tricks]
+image: "thumbnail.jpg"
+description: "Let's see some tips & tricks on how to make an academic resume"
+mainfont: Ubuntu
+---
+
+A week ago, a colleague and I animated a seminar in front of a crowd of PhD students and interns. The goal was to provide some tips & tricks to help them build an academic resume that would ease the search of an academic job. The presentation was originally done using Google Slides, but then I redid it using Quarto and and the `{reveal.js}` library, as I am always eager to develop my Quarto skills. The presentation can be accessed [here](../../pres/resume.html) and a cheat sheet summarizing it is shown below. Note that while the slides are in English, the presentation was adapted to French academia jobs. Nevertheless, I believe that most of it can be useful in any country.
+
+```{r echo=FALSE, dev.args = list(bg = "transparent"), fig.height = 5, dev = "png"}
+#| height: 100px
+
+library(ggplot2)
+
+big.f = 3.5
+small.f = 2.5
+
+mov = 1/6
+
+ggplot() +
+  geom_rect(aes(xmin = 0, ymin = 0, xmax = 5, ymax = -1), fill = "#FFFFE0") + # General tips
+  geom_rect(aes(xmin = 0, ymin = -1, xmax = 5, ymax = -2), fill = "#FFFFE0") +
+  geom_rect(aes(xmin = 0, ymin = -2, xmax = 5, ymax = -3), fill = "#FFFFE0") +
+  geom_rect(aes(xmin = 0, ymin = -3, xmax = 5, ymax = -4), fill = "#FFFFE0") +
+  geom_rect(aes(xmin = 0, ymin = -4, xmax = 5, ymax = -5), fill = "#FFFFE0") +
+  
+  geom_rect(aes(xmin = 5, ymin = 0, xmax = 10, ymax = -1), fill = "#FFF0F5") + # General tips
+  geom_rect(aes(xmin = 5, ymin = -1, xmax = 10, ymax = -2), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -2, xmax = 10, ymax = -3), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -3, xmax = 10, ymax = -4), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -4, xmax = 10, ymax = -5), fill = "#FFF0F5") +
+  geom_rect(aes(xmin = 5, ymin = -5, xmax = 10, ymax = -6), fill = "#FFF0F5") +
+
+  geom_rect(aes(xmin = 10, ymin = 0, xmax = 15, ymax = -1), fill = "#FFDAB9") + # General tips
+  geom_rect(aes(xmin = 10, ymin = -1, xmax = 15, ymax = -2), fill = "#FFDAB9") +
+
+  geom_segment(aes(x = 0, xend = 15, y = 0), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 15, y = -1), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 15, y = -2), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -3), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -4), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -5), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 0, xend = 10, y = -5), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 5, xend = 10, y = -6), color = "grey", linetype = "dashed") +
+
+  geom_segment(aes(x = 0, y = 0, yend = -5), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 5, y = 0, yend = -6), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 10, y = 0, yend = -6), color = "grey", linetype = "dashed") +
+  geom_segment(aes(x = 15, y = 0, yend = -2), color = "grey", linetype = "dashed") +
+
+  geom_text(aes(x = 2.5, y = -0.5, label = "General sections"), size = big.f, fontface = 4) +
+  geom_text(aes(x = 2.5, y = -1.5 + mov, label = "Contacts"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -1.5 - mov, label = "social networks, email..."), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 2.5, y = -2.5 + mov, label = "Skills"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -2.5 - mov, label = "languages, programming, tools..."), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 2.5, y = -3.5 + mov, label = "Education"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -3.5 - mov, label = "diplomas & formations"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 2.5, y = -4.5 + mov, label = "Work/research history"), size = big.f) +
+  geom_text(aes(x = 2.5, y = -4.5 - mov, label = "list of positions"), size = small.f, fontface = "italic", color = "grey60") +
+
+  geom_text(aes(x = 7.5, y = -0.5, label = "Academica-specific sections"), size = big.f, fontface = 4) +
+  geom_text(aes(x = 7.5, y = -1.5 + mov, label = "Teaching experience"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -1.5 - mov, label = "number & nature of courses"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -2.5 + mov, label = "Conferences"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -2.5 - mov, label = "list of posters/oral presentations"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -3.5 + mov, label = "Awards & grants"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -3.5 - mov, label = "amount, nature, reason..."), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -4.5 + mov, label = "Publication list"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -4.5 - mov, label = "all your scientific publications"), size = small.f, fontface = "italic", color = "grey60") +
+  geom_text(aes(x = 7.5, y = -5.5 + mov, label = "Supervision & responsibilities"), size = big.f) +
+  geom_text(aes(x = 7.5, y = -5.5 - mov, label = "interns, journal editor..."), size = small.f, fontface = "italic", color = "grey60") +
+
+  geom_text(aes(x = 12.5, y = -0.5, label = "Bonus sections"), size = big.f, fontface = 4) +
+  geom_text(aes(x = 12.5, y = -1.5 + mov, label = "Other activities & trivia"), size = big.f) +
+  geom_text(aes(x = 12.5, y = -1.5 - mov, label = "science popularization..."), size = small.f, fontface = "italic", color = "grey60") +
+
+  theme_void(base_family = "Ubuntu")
+
+ggsave(last_plot(), filename = "thumbnail.jpg", width = 640 * 3.2, height = 427 * 3.2, units = "px")
+
+```
+
+*Yes, I did a blog post to link to a presentation...*

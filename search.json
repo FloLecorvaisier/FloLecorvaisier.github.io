@@ -39,7 +39,7 @@
     "href": "blog.html",
     "title": "My blog",
     "section": "",
-    "text": "Rewilding\n\n\n\nmiscellaneous\n\n\n\nLet’s talk a bit about rewilding.\n\n\n\n\n\nFeb 16, 2026\n\n\nFlorian Lecorvaisier\n\n\n\n\n\n\n\n\n\n\n\n\nSpeeding up your R scripts\n\n\n\ntips and tricks\n\n\n\nIn this post, I will share a few tips on how to speed up the execution of your R scripts.\n\n\n\n\n\nJan 25, 2026\n\n\nFlorian Lecorvaisier\n\n\n\n\n\n\n\n\n\n\n\n\nHow to name Marie Curie?\n\n\n\nmiscellaneous\n\n\n\nHow must we name Marie Curie? I took some time to research how the two Nobel prizes winner wanted to be named.\n\n\n\n\n\nJun 30, 2025\n\n\nFlorian Lecorvaisier\n\n\n\n\n\n\n\n\n\n\n\n\nSimple linear regression\n\n\n\ntutorial\n\n\n\nIn this post, you will learn how to decipher the outputs of a simple linear regression model done using R.\n\n\n\n\n\nMar 31, 2025\n\n\nFlorian Lecorvaisier\n\n\n\n\n\nNo matching items"
+    "text": "Making an academic resume\n\n\n\ntips and tricks\n\n\n\nLet’s see some tips & tricks on how to make an academic resume\n\n\n\n\n\nMar 28, 2026\n\n\nFlorian Lecorvaisier\n\n\n\n\n\n\n\n\n\n\n\n\nRewilding\n\n\n\nmiscellaneous\n\n\n\nLet’s talk a bit about rewilding.\n\n\n\n\n\nFeb 16, 2026\n\n\nFlorian Lecorvaisier\n\n\n\n\n\n\n\n\n\n\n\n\nSpeeding up your R scripts\n\n\n\ntips and tricks\n\n\n\nIn this post, I will share a few tips on how to speed up the execution of your R scripts.\n\n\n\n\n\nJan 25, 2026\n\n\nFlorian Lecorvaisier\n\n\n\n\n\n\n\n\n\n\n\n\nHow to name Marie Curie?\n\n\n\nmiscellaneous\n\n\n\nHow must we name Marie Curie? I took some time to research how the two Nobel prizes winner wanted to be named.\n\n\n\n\n\nJun 30, 2025\n\n\nFlorian Lecorvaisier\n\n\n\n\n\n\n\n\n\n\n\n\nSimple linear regression\n\n\n\ntutorial\n\n\n\nIn this post, you will learn how to decipher the outputs of a simple linear regression model done using R.\n\n\n\n\n\nMar 31, 2025\n\n\nFlorian Lecorvaisier\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "cv.html",
@@ -201,5 +201,12 @@
     "title": "Rewilding",
     "section": "Conclusion",
     "text": "Conclusion\nRewilding is an appealing concept: using the nature to heal the nature. But sometimes it is hard to put into practice, and results may go in unexpected directions. (Re)introducing species may have dramatic consequences on ecosystems, like removing other species. Nowadays, there are many scientists and conservationists try to understand how rewilding can be put into practice, if and when it is a viable solution, etc. The future will tell if it is mostly a sweet dream, having a new megafauna in Siberia and large meadows in Europe, or if it can help us restore the ecosystems we spent decade destroying.\nFor those interested in the topic of rewilding, I can suggest you to subscribe to the newsletter of the British Ecological Society’s rewilding group (communications are made in English). I can also recommend the books Réensauvager la nature pour sauver la planète and L’Europe réensauvagée – Vers un nouveau monde, both in French."
+  },
+  {
+    "objectID": "posts/academic-resume/index.html",
+    "href": "posts/academic-resume/index.html",
+    "title": "Making an academic resume",
+    "section": "",
+    "text": "A week ago, a colleague and I animated a seminar in front of a crowd of PhD students and interns. The goal was to provide some tips & tricks to help them build an academic resume that would ease the search of an academic job. The presentation was originally done using Google Slides, but then I redid it using Quarto and and the {reveal.js} library, as I am always eager to develop my Quarto skills. The presentation can be accessed here and a cheat sheet summarizing it is shown below. Note that while the slides are in English, the presentation was adapted to French academia jobs. Nevertheless, I believe that most of it can be useful in any country.\n\n\n\n\n\n\n\n\n\nYes, I did a blog post to link to a presentation…"
   }
 ]
