@@ -155,7 +155,7 @@ Include everything relevant or that you want to tell about yourself, such as:
 - Science popularization/outreach activities
 - Software development
 - Interviews
-- Associative activities (Les Pinsons MigRateurs hehe)
+- Associative activities
 - Hobbies
 - Other activities
 - ...
