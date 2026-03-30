@@ -53,7 +53,7 @@
     "href": "cv.html#work-history",
     "title": "Curriculum vitæ",
     "section": "Work history",
-    "text": "Work history\n   Assistant engineer\n\n   10/2025 - ???              LBBE, Villeurbanne, France\nDevelopping a spatialized individual-based model to understand the dynamics of the African Swine fever and the possible effect of vaccine strategies in a wild boar population.\n\n \n   PhD Student\n\n   10/2021 - 09/2024              LBBE, Villeurbanne, France\nWorking on the evolution of diphtheria and pertussis under vaccine pressure by the mean of mathematical modeling, numerical simulations and statistical analyzes.\n\n \n   Master degree internship\n\n   01/2021 - 06/2021              LBBE, Villeurbanne, France\nDeveloping a SIR-like model to study how toxoid vaccines could select for toxin-deficient strains.\n\n \n   Bachelor degree internship\n\n   06/2019                        LEHNA, Villeurbanne, France\nDeveloping a database of amphibian dispersal distances and morphological traits."
+    "text": "Work history\n   Assistant engineer\n\n   10/2025 - 09/2026              LBBE, Villeurbanne, France\nDevelopping a spatialized individual-based model to understand the dynamics of the African Swine fever and the possible effect of vaccine strategies in a wild boar population.\n\n \n   PhD Student\n\n   10/2021 - 09/2024              LBBE, Villeurbanne, France\nWorking on the evolution of diphtheria and pertussis under vaccine pressure by the mean of mathematical modeling, numerical simulations and statistical analyzes.\n\n \n   Master degree internship\n\n   01/2021 - 06/2021              LBBE, Villeurbanne, France\nDeveloping a SIR-like model to study how toxoid vaccines could select for toxin-deficient strains.\n\n \n   Bachelor degree internship\n\n   06/2019                        LEHNA, Villeurbanne, France\nDeveloping a database of amphibian dispersal distances and morphological traits."
   },
   {
     "objectID": "cv.html#education",
@@ -67,7 +67,7 @@
     "href": "cv.html#skills",
     "title": "Curriculum vitæ",
     "section": "Skills",
-    "text": "Skills\n\n\n\n\n\n\nNoteProgramming\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\n\nLaTeX\n\n\n\nPython\n\n\n\nGit & GitHub\n\n\n\nBash\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteOperating systems\n\n\n\n\n\n\n\n\n\n\n\n\nWindows\n\n\n\nLinux (Ubuntu)\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSoftware & Tools\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio\n\n\n\nMicrosoft Office\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteLanguages\n\n\n\n\n\n\n\n\n\n\n\n\nFrench\n\n\n\nEnglish\n\n\n\nSpanish\n\n\n\nJapanese"
+    "text": "Skills\n\n\n\n\n\n\nNoteProgramming\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\n\nLaTeX\n\n\n\nBash\n\n\n\nPython\n\n\n\nGit & GitHub\n\n\n\nTypst\n\n\n\nRust\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteOperating systems\n\n\n\n\n\n\n\n\n\n\n\n\nWindows\n\n\n\nLinux (Ubuntu)\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteSoftware & Tools\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio\n\n\n\nMicrosoft Office\n\n\n\nOverleaf\n\n\n\nQuarto\n\n\n\nSlurm\n\n\n\nLibreOffice\n\n\n\nPositron\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteLanguages\n\n\n\n\n\n\n\n\n\n\n\n\nFrench\n\n\n\nEnglish\n\n\n\nSpanish\n\n\n\nJapanese"
   },
   {
     "objectID": "cv.html#achievements-honours-and-awards",
@@ -208,5 +208,26 @@
     "title": "Making an academic resume",
     "section": "",
     "text": "A week ago, a colleague and I animated a seminar in front of a crowd of PhD students and interns. The goal was to provide some tips & tricks to help them build an academic resume that would ease the search of an academic job. The presentation was originally done using Google Slides, but then I redid it using Quarto and and the {reveal.js} library, as I am always eager to develop my Quarto skills. The presentation can be accessed here and a cheat sheet summarizing it is shown below. Note that while the slides are in English, the presentation was adapted to French academia jobs. Nevertheless, I believe that most of it can be useful in any country.\n\n\n\n\n\n\n\n\n\nYes, I did a blog post to link to a presentation…"
+  },
+  {
+    "objectID": "cv.html#certifications",
+    "href": "cv.html#certifications",
+    "title": "Curriculum vitæ",
+    "section": "Certifications",
+    "text": "Certifications\n   CNU Qualification\n\n   2026\nSections 26 (Applied mathematics) & 67 (Population biology and ecology).\n\n \n   TOIEC Listening and reading test\n\n   2021\nScored 980/990."
+  },
+  {
+    "objectID": "cv.html#science-popularization",
+    "href": "cv.html#science-popularization",
+    "title": "Curriculum vitæ",
+    "section": "Science popularization",
+    "text": "Science popularization\n   Fête de la science\n\n   2021, 2024, 2025               Villeurbanne/Lyon, France\nAnimation of workshops (health quiz, population dynamics game) and presentation of my thesis project."
+  },
+  {
+    "objectID": "cv.html#peer-reviewing",
+    "href": "cv.html#peer-reviewing",
+    "title": "Curriculum vitæ",
+    "section": "Peer reviewing",
+    "text": "Peer reviewing\n   Translational pediatrics\n\n   1 article"
   }
 ]

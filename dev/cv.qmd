@@ -35,7 +35,7 @@ df_work <- data.frame(title = c("Assistant engineer",
                                 "PhD Student",
                                 "Master degree internship",
                                 "Bachelor degree internship"),
-                      date = c("10/2025 - ???",
+                      date = c("10/2025 - 09/2026",
                                "10/2021 - 09/2024",
                                "01/2021 - 06/2021",
                                "06/2019"),
@@ -85,14 +85,18 @@ for (i in 1:nrow(df_educ)) {
 ```{r echo=FALSE, results="asis", eval=TRUE}
 df_skill <- data.frame(lang = c("R",
                                 "LaTeX",
+                                "Bash",
                                 "Python",
                                 "Git & GitHub",
-                                "Bash"),
+                                "Typst",
+                                "Rust"),
                        score = c(5, 
                                  3, 
+                                 3,
                                  2,
                                  2,
-                                 2))
+                                 2,
+                                 1))
 
   cat("||\n")
   cat("|-|-|\n")
@@ -134,9 +138,19 @@ for (i in 1:nrow(df_skill)) {
 
 ```{r echo=FALSE, results="asis"}
 df_skill <- data.frame(lang = c("RStudio",
-                                "Microsoft Office"),
+                                "Microsoft Office",
+                                "Overleaf",
+                                "Quarto",
+                                "Slurm",
+                                "LibreOffice",
+                                "Positron"),
                        score = c(5, 
-                                 5))
+                                 5,
+                                 4,
+                                 4,
+                                 3,
+                                 2,
+                                 2))
 
   cat("||\n")
   cat("|-|-|\n")
@@ -176,6 +190,23 @@ for (i in 1:nrow(df_skill)) {
 
 :::
 
+## Certifications
+
+```{r echo=FALSE, results='asis'}
+df_cert <- data.frame(title = c("CNU Qualification", "TOIEC Listening and reading test"),
+                      descr = c("Sections 26 (Applied mathematics) & 67 (Population biology and ecology).", "Scored 980/990."),
+                      year = c(2026, 2021))
+
+for (i in 1:nrow(df_cert)) {
+  cat("{{< fa certificate >}} &nbsp; **", df_cert$title[i], "**\n\n", sep = "")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa calendar-days >}} &nbsp; ", df_cert$year[i], "\n\n")
+  cat(df_cert$descr[i], "\n\n")
+  cat(":::\n\n", ifelse(i < nrow(df_cert), "&nbsp;\n\n", ""))
+}
+
+```
+
 ## Achievements, honours and awards
 
 ```{r echo=FALSE, results='asis'}
@@ -211,6 +242,38 @@ for (i in 1:nrow(df_conf)) {
 
 ```
 
+## Science popularization
+
+```{r echo=FALSE, results = 'asis'}
+df_spop <- data.frame(title = c("Fête de la science"),
+                      date = c("2021, 2024, 2025"),
+                      place = c("Villeurbanne/Lyon, France"),
+                      descr = c("Animation of workshops (health quiz, population dynamics game) and presentation of my thesis project."))
+
+for (i in 1:nrow(df_spop)) {
+  cat("{{< fa flask >}} &nbsp; **", df_spop$title[i], "**\n\n", sep = "")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa calendar-days >}} &nbsp; ", df_spop$date[i], rep("&nbsp;", 13),
+      "{{< fa location-dot >}} &nbsp;", df_spop$place[i], "\n\n", sep = "")
+  cat(df_spop$descr[i], "\n\n")
+  cat(":::\n\n", ifelse(i < nrow(df_conf), "&nbsp;\n\n", ""))
+}
+```
+
+## Peer reviewing
+
+```{r echo=FALSE, results='asis'}
+
+df_prev <- data.frame(title = "Translational pediatrics",
+                      n = 1)
+
+for (i in 1:nrow(df_prev)) {
+  cat("{{< fa book-open >}} &nbsp; ***", df_prev$title[i], "***\n\n", sep = "")
+  cat("::: {style='font-size: 80%; font-family: monospace;'}\n\n")
+  cat("{{< fa hashtag >}} &nbsp; ", paste0(df_prev$n[i], " article", ifelse(df_prev$n[i] > 1, "s", "")), "\n\n", sep = "")
+  cat(":::\n\n", ifelse(i < nrow(df_prev), "&nbsp;\n\n", ""))
+}
+```
 
 ## Publications
 
