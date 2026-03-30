@@ -25,7 +25,6 @@ bibliography: references.bib
 categories: [tutorial]
 image: "thumbnail.jpg"
 description: "In this post, you will learn how to decipher the outputs of a simple linear regression model done using R."
-mainfont: Ubuntu
 ---
 
 ```{r}
@@ -80,7 +79,6 @@ In this example, the explanatory variable is the age of the sustainer propellant
 ```{r}
 x = c(15.50, 23.75,  8.00, 17.00,  5.50, 19.00, 24.00,  2.50,  7.50, 11.00, 
       13.00,  3.75, 25.00,  9.75, 22.00, 18.00,  6.00, 12.50,  2.00, 21.50)
-
 ```
 
 On the other hand, the response variable is the shear strength, measured in psi. For each propellant age, a corresponding shear strength has been measured, so we also have twenty values, reported below in the `y` variable.

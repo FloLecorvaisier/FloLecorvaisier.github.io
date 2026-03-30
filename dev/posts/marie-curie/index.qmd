@@ -24,7 +24,6 @@ embed-resources: true
 categories: [miscellaneous]
 image: "thumbnail.jpg"
 description: "How must we name Marie Curie? I took some time to research how the two Nobel prizes winner wanted to be named."
-mainfont: Ubuntu
 ---
 
 ```{r echo=FALSE}

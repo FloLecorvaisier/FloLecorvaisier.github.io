@@ -25,7 +25,6 @@ bibliography: references.bib
 categories: [miscellaneous]
 image: "thumbnail.jpg"
 description: "Let's talk a bit about rewilding."
-mainfont: Ubuntu
 ---
 
 This blog post was written in the context of the "Ma Petite Planète" done in the LBBE in January-February 2026. Here, I will try to explain the concept of rewilding, give a few example, and explain how it can be used as a tool for species conservation and ecosystems recovery.

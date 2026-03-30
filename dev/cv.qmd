@@ -1,29 +1,28 @@
 ---
-title: "Curriculum vitæ"
-author: 
-  name: 
-    given: Florian
-    family: Lecorvaisier
-  degrees: 
-    - PhD
-    - MSc
-    - BSc
-  orcid: 0000-0001-8201-5350
-  email: florian.lecorvaisier@gmail.com
-  url: https://flolecorvaisier.github.io
+title: "Curriculum vitæ" 
 title-block-banner: darkolivegreen
+about:
+  template: trestles
+  image: picture.jpeg
+  links:
+    - icon: bluesky
+      text: Bluesky
+      href: https://bsky.app/profile/flolecorvaisier.bsky.social
+    - icon: github
+      text: GitHub
+      href: https://github.com/flolecorvaisier
+    - icon: envelope-fill
+      text: Mail
+      href: mailto:florian.lecorvaisier@vetagro-sup.fr
 format: 
   html:
     toc: true
+    grid:
+      body-width: 1400px
     toc-location: left
     toc-depth: 4
-    header-includes: |
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 editor: source
 embed-resources: true
-mainfont: Ubuntu
 ---
 
 *Eco-epidemiology researcher/engineer with a particular interest in the evolution of infectious diseases.*
@@ -43,7 +42,7 @@ df_work <- data.frame(title = c("Assistant engineer",
                                   "LBBE, Villeurbanne, France",
                                   "LBBE, Villeurbanne, France",
                                   "LEHNA, Villeurbanne, France"),
-                      descr = c("Developping a spatialized individual-based model to understand the dynamics of the African Swine fever and the possible effect of vaccine strategies in a wild boar population.",
+                      descr = c("Developing a spatialized individual-based model to understand the dynamics of the African Swine fever and the possible effect of vaccine strategies in a wild boar population.",
                                 "Working on the evolution of diphtheria and pertussis under vaccine pressure by the mean of mathematical modeling, numerical simulations and statistical analyzes.", 
                                 "Developing a SIR-like model to study how toxoid vaccines could select for toxin-deficient strains.",
                                 "Developing a database of amphibian dispersal distances and morphological traits."))

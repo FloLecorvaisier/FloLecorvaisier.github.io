@@ -18,13 +18,12 @@ author:
   orcid: 0000-0001-8201-5350
   email: florian.lecorvaisier@gmail.com
   url: https://flolecorvaisier.github.io
-date: "2026-03-28"
-date-modified: "2026-03-28"
+date: "2026-03-25"
+date-modified: "2026-03-25"
 embed-resources: true
 categories: [tips and tricks]
 image: "thumbnail.jpg"
 description: "Let's see some tips & tricks on how to make an academic resume"
-mainfont: Ubuntu
 ---
 
 A week ago, a colleague and I animated a seminar in front of a crowd of PhD students and interns. The goal was to provide some tips & tricks to help them build an academic resume that would ease the search of an academic job. The presentation was originally done using Google Slides, but then I redid it using Quarto and and the `{reveal.js}` library, as I am always eager to develop my Quarto skills. The presentation can be accessed [here](../../pres/resume.html) and a cheat sheet summarizing it is shown below. Note that while the slides are in English, the presentation was adapted to French academia jobs. Nevertheless, I believe that most of it can be useful in any country.

@@ -2,7 +2,6 @@
 title: "Florian Lecorvaisier's website"
 embed-resources: true
 title-block-banner: darkolivegreen
-mainfont: Ubuntu
 format: 
   html: 
     header-includes: |
