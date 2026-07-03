@@ -1,0 +1,17 @@
+{
+  "hash": "d7dbe07fbc0d4d4ba89aa1b792be991e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"ModAH Conference 2026\"\ntitle-block-banner: darkolivegreen\nformat: \n  html:\n    toc: true\n    toc-location: left\n    toc-depth: 4\neditor: visual\nauthor: \n  name: \n    given: Florian\n    family: Lecorvaisier\n  degrees: \n    - PhD\n    - MSc\n    - BSc\n  orcid: 0000-0001-8201-5350\n  email: florian.lecorvaisier@gmail.com\n  url: https://flolecorvaisier.github.io\ndate: \"2026-07-05\" \ndate-modified: \"2026-07-05\"\nembed-resources: true\ncategories: [conference]\nimage: \"thumbnail.jpg\"\ndescription: \"Link to my poster for the ModAH Conference 2026.\"\n---\n\nOn August 25^th^ to 27^th^, I will be at the [ModAH Conference 2026](https://modahconf2026.sciencesconf.org/). I will be presenting a poster on the work I carried on for 9 months now on deciphering how ecological, epidemiological and bio-demographic conditions can alter the risk for the African Swine Fever to become endemic following introduction of an infected individuals in a population. Here are the main results detailed on the poster:\n\n- Contacts with infected carcasses are the most influencial source of infection on the risk of endemicity.\n\n- The risk of endemicity is higher if the disease is introduced in June (hot season) rather than January or November (cold season).\n\n- A wide spatial structure is crucial for the virus to keep getting access to new hosts and maintain itself in the population.\n\n- A simple increase in the population density does not increase the risk of endemicity.\n\nThe poster can be accessed [here](https://flolecorvaisier.github.io/resources/poster-modah-2026.pdf).\n\nOn a total side note, I discovered the `qrcode` R package while working on my poster. It is really interesting, as many website that you can use to generate a QR code ask you to register if you want to download your code. So, I generated the code on my poster using this package, and you can see below how easy it was!\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(qrcode)\n\nQR = qr_code(\"https://flolecorvaisier.github.io/resources/poster-modah-2026.pdf\")\n\nplot(QR)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

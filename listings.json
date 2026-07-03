@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/poster-modah/index.html",
       "/posts/academic-resume/index.html",
       "/posts/rewilding/index.html",
       "/posts/speeding-up-your-r-scripts/index.html",

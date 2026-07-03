@@ -1,0 +1,17 @@
+{
+  "hash": "102d73ade8271e341e67f26009ec3b10",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Making an academic resume\"\ntitle-block-banner: darkolivegreen\nformat: \n  html:\n    toc: true\n    toc-location: left\n    toc-depth: 4\neditor: visual\nauthor: \n  name: \n    given: Florian\n    family: Lecorvaisier\n  degrees: \n    - PhD\n    - MSc\n    - BSc\n  orcid: 0000-0001-8201-5350\n  email: florian.lecorvaisier@gmail.com\n  url: https://flolecorvaisier.github.io\ndate: \"2026-03-25\"\ndate-modified: \"2026-03-25\"\nembed-resources: true\ncategories: [tips and tricks]\nimage: \"thumbnail.jpg\"\ndescription: \"Let's see some tips & tricks on how to make an academic resume\"\n---\n\nA week ago, a colleague and I animated a seminar in front of a crowd of PhD students and interns. The goal was to provide some tips & tricks to help them build an academic resume that would ease the search of an academic job. The presentation was originally done using Google Slides, but then I redid it using Quarto and and the `{reveal.js}` library, as I am always eager to develop my Quarto skills. The presentation can be accessed [here](../../pres/resume.html) and a cheat sheet summarizing it is shown below. Note that while the slides are in English, the presentation was adapted to French academia jobs. Nevertheless, I believe that most of it can be useful in any country.\n\n\n::: {.cell height='100px'}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n*Yes, I did a blog post to link to a presentation...*",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
