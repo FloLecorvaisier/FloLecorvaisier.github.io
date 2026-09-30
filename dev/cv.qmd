@@ -27,25 +27,40 @@ embed-resources: true
 
 *Eco-epidemiology researcher/engineer with a particular interest in the evolution of infectious diseases.*
 
-## Work history
+## > Work history
 
 ```{r echo=FALSE, results='asis'}
-df_work <- data.frame(title = c("Assistant engineer",
-                                "PhD Student",
-                                "Master degree internship",
-                                "Bachelor degree internship"),
-                      date = c("10/2025 - 09/2026",
-                               "10/2021 - 09/2024",
-                               "01/2021 - 06/2021",
-                               "06/2019"),
-                      address = c("LBBE, Villeurbanne, France",
-                                  "LBBE, Villeurbanne, France",
-                                  "LBBE, Villeurbanne, France",
-                                  "LEHNA, Villeurbanne, France"),
-                      descr = c("Developing a spatialized individual-based model to understand the dynamics of the African Swine fever and the possible effect of vaccine strategies in a wild boar population.",
-                                "Working on the evolution of diphtheria and pertussis under vaccine pressure by the mean of mathematical modeling, numerical simulations and statistical analyzes.", 
-                                "Developing a SIR-like model to study how toxoid vaccines could select for toxin-deficient strains.",
-                                "Developing a database of amphibian dispersal distances and morphological traits."))
+
+df_work <- data.frame(
+  title = c(
+    "Research engineer",
+    "Assistant engineer",
+    "PhD Student",
+    "Master degree internship",
+    "Bachelor degree internship"
+  ),
+  date = c(
+    "10/2026 - 03/2027",
+    "10/2025 - 09/2026",
+    "10/2021 - 09/2024",
+    "01/2021 - 06/2021",
+    "06/2019"
+  ),
+  address = c(
+    "LBBE, Villeurbanne, France",
+    "LBBE, Villeurbanne, France",
+    "LBBE, Villeurbanne, France",
+    "LBBE, Villeurbanne, France",
+    "LEHNA, Villeurbanne, France"
+  ),
+  descr = c(
+    "Implementing control strategies in the model produced in the previous position.",
+    "Developing a spatialized individual-based model to understand the dynamics of the African Swine fever and the possible effect of vaccine strategies in a wild boar population.",
+    "Working on the evolution of diphtheria and pertussis under vaccine pressure by the mean of mathematical modeling, numerical simulations and statistical analyzes.", 
+    "Developing a SIR-like model to study how toxoid vaccines could select for toxin-deficient strains.",
+    "Developing a database of amphibian dispersal distances and morphological traits."
+  )
+)
 
 for (i in 1:nrow(df_work)) {
   cat("{{< fa gears >}} &nbsp; **", df_work$title[i], "**\n\n", sep = "")
@@ -55,15 +70,36 @@ for (i in 1:nrow(df_work)) {
   cat(df_work$descr[i], "\n\n")
   cat(":::\n\n", ifelse(i < nrow(df_work), "&nbsp;\n\n", ""))
 }
+
 ```
 
-## Education
+## > Education
 
 ```{r echo=FALSE, results='asis'}
-df_educ <- data.frame(degree = c("Doctoral degree", "University Degree", "Master of Science", "Bachelor of Science"),
-                      title = c("Eco-Epidemiology", "Evolutionary Biology & Medicine", "Ecology & Evolutionary Biology", "Ecology & Evolutionary Biology"),
-                      date = c("10/2021 - 12/2024", "10/2021 - 09/2022", "09/2019 - 06/2021", "09/2016 - 06/2021"),
-                      place = c("University Claude Bernard Lyon 1, France"))
+
+df_educ = data.frame(
+  degree = c(
+    "Doctoral degree",
+    "University Degree",
+    "Master of Science",
+    "Bachelor of Science"
+  ),
+  title = c(
+    "Eco-Epidemiology",
+    "Evolutionary Biology & Medicine",
+    "Ecology & Evolutionary Biology",
+    "Ecology & Evolutionary Biology"
+  ),
+  date = c(
+    "10/2021 - 12/2024",
+    "10/2021 - 09/2022",
+    "09/2019 - 06/2021",
+    "09/2016 - 06/2021"
+  ),
+  place = c(
+    "University Claude Bernard Lyon 1, France"
+  )
+)
 
 for (i in 1:nrow(df_educ)) {
   cat("{{< fa graduation-cap >}} &nbsp; **", df_educ$degree[i], "**", rep("&nbsp;", 20), "*", df_educ$title[i], "*\n\n", sep = "")
@@ -75,36 +111,42 @@ for (i in 1:nrow(df_educ)) {
 
 ```
 
-## Skills
+## > Skills
 
 ::: {.callout-note icon="false" collapse="true"}
 
 ### Programming
 
-```{r echo=FALSE, results="asis", eval=TRUE}
-df_skill <- data.frame(lang = c("R",
-                                "LaTeX",
-                                "Bash",
-                                "Python",
-                                "Git & GitHub",
-                                "Typst",
-                                "Rust"),
-                       score = c(5, 
-                                 3, 
-                                 3,
-                                 2,
-                                 2,
-                                 2,
-                                 1))
+```{r echo=FALSE, results="asis"}
 
-  cat("||\n")
-  cat("|-|-|\n")
+df_skill = data.frame(
+  lang = c(
+    "R",
+    "LaTeX",
+    "Bash",
+    "Python",
+    "Git & GitHub",
+    "Typst",
+    "Rust"
+  ),
+  score = c(
+    5, 
+    3, 
+    3,
+    2,
+    2,
+    2,
+    1
+  )
+)
+
+cat("||\n")
+cat("|-|-|\n")
 for (i in 1:nrow(df_skill)) {
-  # cat(df_skill$lang[i], rep("&nbsp;", 30), sep = "")
   cat("|**", df_skill$lang[i], "**|", sep = "")
   cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
 }
-cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+
 ```
 
 :::
@@ -114,19 +156,24 @@ cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
 ### Operating systems
 
 ```{r echo=FALSE, results="asis"}
-df_skill <- data.frame(lang = c("Windows",
-                                "Linux (Ubuntu)"),
-                       score = c(5, 
-                                 3))
+df_skill = data.frame(
+  lang = c(
+    "Windows",
+    "Linux (Ubuntu)"
+  ),
+  score = c(
+    5,
+    4
+  )
+)
 
-  cat("||\n")
-  cat("|-|-|\n")
+cat("||\n")
+cat("|-|-|\n")
 for (i in 1:nrow(df_skill)) {
-  # cat(df_skill$lang[i], rep("&nbsp;", 30), sep = "")
   cat("|**", df_skill$lang[i], "**|", sep = "")
   cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
 }
-  cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+
 ```
 
 :::
@@ -136,29 +183,36 @@ for (i in 1:nrow(df_skill)) {
 ### Software & Tools
 
 ```{r echo=FALSE, results="asis"}
-df_skill <- data.frame(lang = c("RStudio",
-                                "Microsoft Office",
-                                "Overleaf",
-                                "Quarto",
-                                "Slurm",
-                                "LibreOffice",
-                                "Positron"),
-                       score = c(5, 
-                                 5,
-                                 4,
-                                 4,
-                                 3,
-                                 2,
-                                 2))
+df_skill = data.frame(
+  lang = c(
+    "RStudio",
+    "Microsoft Office",
+    "Overleaf",
+    "Quarto",
+    "Slurm",
+    "LibreOffice",
+    "Shiny",
+    "Positron"
+  ),
+  score = c(
+    5, 
+    5,
+    4,
+    4,
+    3,
+    3,
+    3,
+    3
+  )
+)
 
-  cat("||\n")
-  cat("|-|-|\n")
+cat("||\n")
+cat("|-|-|\n")
 for (i in 1:nrow(df_skill)) {
-  # cat(df_skill$lang[i], rep("&nbsp;", 30), sep = "")
   cat("|**", df_skill$lang[i], "**|", sep = "")
   cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
 }
-  cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+
 ```
 
 :::
@@ -168,33 +222,55 @@ for (i in 1:nrow(df_skill)) {
 ### Languages
 
 ```{r echo=FALSE, results="asis"}
-df_skill <- data.frame(lang = c("French",
-                                "English",
-                                "Spanish",
-                                "Japanese"),
-                       score = c(5, 
-                                 4,
-                                 2,
-                                 1),
-                       certif = c(NA, "TOEIC Reading and Listening Test (980/990)"), NA, NA)
+df_skill = data.frame(
+  lang = c(
+    "French",
+    "English",
+    "Spanish",
+    "Japanese"
+  ),
+  score = c(
+    5, 
+    4,
+    2,
+    1
+  )
+)
 
-  cat("||\n")
-  cat("|-|-|\n")
+cat("||\n")
+cat("|-|-|\n")
 for (i in 1:nrow(df_skill)) {
   cat("|**", df_skill$lang[i], "**|", sep = "")
   cat("<progress value='", df_skill$score[i], "' max='5'></progress>|\n", sep = "")
 }
-  cat("\n\n: {tbl-colwidths=\"[25,75]\"}", sep = "")
+
 ```
 
 :::
 
-## Certifications
+## > Certifications & Training
 
 ```{r echo=FALSE, results='asis'}
-df_cert <- data.frame(title = c("CNU Qualification", "TOIEC Listening and reading test"),
-                      descr = c("Sections 26 (Applied mathematics) & 67 (Population biology and ecology).", "Scored 980/990."),
-                      year = c(2026, 2021))
+df_cert = data.frame(
+  title = c(
+    "Artificial Intelligence for Ecologists: A Toolkit (training)",
+    "AI4BioMed (training)",
+    "CNU Qualification",
+    "TOIEC Listening and reading test"
+  ),
+  descr = c(
+    "Training on AI and Machine Learning with application to ecology.",
+    "Training on AI and Machine Learning with application to biology and health.",
+    "Sections 26 (Applied mathematics) & 67 (Population biology and ecology).",
+    "Scored 980/990."
+  ),
+  year = c(
+    2026,
+    2026,
+    2026, 
+    2021
+  )
+)
 
 for (i in 1:nrow(df_cert)) {
   cat("{{< fa certificate >}} &nbsp; **", df_cert$title[i], "**\n\n", sep = "")
@@ -206,12 +282,20 @@ for (i in 1:nrow(df_cert)) {
 
 ```
 
-## Achievements, honours and awards
+## > Achievements, honours and awards
 
 ```{r echo=FALSE, results='asis'}
-df_acha <- data.frame(title = c("3-years grant for funding a thesis"),
-                      year = c(2021),
-                      structure = c("E2M2 doctoral school"))
+df_acha = data.frame(
+  title = c(
+    "3-years grant for funding a thesis"
+  ),
+  year = c(
+    2021
+  ),
+  structure = c(
+    "E2M2 doctoral school"
+  )
+)
 
 for (i in 1:nrow(df_acha)) {
   cat("{{< fa award >}} &nbsp; **", df_acha$title[i], "**\n\n", sep = "")
@@ -223,13 +307,34 @@ for (i in 1:nrow(df_acha)) {
 ```
 
 
-## Conferences and presentations
+## > Conferences and presentations
 
 ```{r echo=FALSE, results='asis'}
-df_conf <- data.frame(type = c("oral", "poster", "poster"),
-                      title = c("Rencontres du GdR Phylodynamique", "13th International Bordetella Symposium", "EvoLyon"),
-                      date = c("2023", "2022", "2021"),
-                      place = c("Villeurbanne, France", "Vancouver, Canada", "Lyon, France"))
+df_conf = data.frame(
+  type = c(
+    "poster",
+    "oral",
+    "poster",
+    "poster"),
+  title = c(
+    "Modelling in Animal Health",
+    "Rencontres du GdR Phylodynamique",
+    "13th International Bordetella Symposium",
+    "EvoLyon"
+  ),
+  date = c(
+    "2026",
+    "2023",
+    "2022",
+    "2021"
+  ),
+  place = c(
+    "Nantes, France",
+    "Villeurbanne, France",
+    "Vancouver, Canada",
+    "Lyon, France"
+  )
+)
 
 for (i in 1:nrow(df_conf)) {
   cat(ifelse(df_conf$type[i] == "oral", "{{< fa comment >}}", "{{< fa image >}}"), "&nbsp; **", df_conf$title[i], "**\n\n", sep = "")
@@ -241,7 +346,7 @@ for (i in 1:nrow(df_conf)) {
 
 ```
 
-## Science popularization
+## > Science popularization
 
 ```{r echo=FALSE, results = 'asis'}
 df_spop <- data.frame(title = c("Fête de la science"),
@@ -259,7 +364,7 @@ for (i in 1:nrow(df_spop)) {
 }
 ```
 
-## Peer reviewing
+## > Peer reviewing
 
 ```{r echo=FALSE, results='asis'}
 
@@ -274,35 +379,60 @@ for (i in 1:nrow(df_prev)) {
 }
 ```
 
-## Publications
+## > Publications
 
 ```{r echo=FALSE, results='asis'}
-data = data.frame(title = c("Comparing frequentist and Bayesian methods to identify drivers of pathogen strain invasion: A temporal case study of pertussis in the United States",
-                            "Etude sur la compétition intra-spécifique entre souches bactérienne dans le contexte de la vaccination de masse : approches théorique et statistique",
-                            "Impact de la vaccination sur l'évolution de *Bordetella pertussis*",
-                            "Using a dynamical model to study the impact of a toxoid vaccine on the evolution of a bacterium: The example of diphtheria"),
-                  authors = c("Lecorvaisier F., Pontier D., Sauvage F. and Fouchet D.", 
-                              "Lecorvaisier F.",
-                              "Lecorvaisier F.",
-                              "Lecorvaisier F., Pontier D., Soubeyrand B. and Fouchet D."),
-                  year = c(2026,
-                           2024, 
-                           2024, 
-                           2024),
-                  journal = c("Infectious Disease Modelling",
-                              "PhD thesis",
-                              "médecine/sciences", 
-                              "Ecological Modelling"),
-                  supp = c("vol. 11, n°2, pp. 389-406",
-                           NA,
-                           "vol. 40, n°2, pp. 161-166",
-                           "vol. 487, pp. 110569"),
-                  link = c("https://doi.org/10.1016/j.idm.2025.09.007",
-                           "https://hal.science/tel-04918453v1",
-                           "https://doi.org/10.1051/medsci/2023219", 
-                           "https://doi.org/10.1051/medsci/2023219"),
-                  isopen = c(TRUE, TRUE, TRUE, TRUE))
-
+data = data.frame(
+  title = c(
+    "[PREPRINT] Cheating and imperfect vaccines as drivers of bacterial evolution",
+    "Comparing frequentist and Bayesian methods to identify drivers of pathogen strain invasion: A temporal case study of pertussis in the United States",
+    "Etude sur la compétition intra-spécifique entre souches bactérienne dans le contexte de la vaccination de masse : approches théorique et statistique",
+    "Impact de la vaccination sur l'évolution de *Bordetella pertussis*",
+    "Using a dynamical model to study the impact of a toxoid vaccine on the evolution of a bacterium: The example of diphtheria"
+  ),
+  authors = c(
+    "**Lecorvaisier F.**, Thomas L. P. Martin",
+    "**Lecorvaisier F.**, Pontier D., Sauvage F. and Fouchet D.", 
+    "**Lecorvaisier F.**",
+    "**Lecorvaisier F.**",
+    "**Lecorvaisier F.**, Pontier D., Soubeyrand B. and Fouchet D."
+  ),
+  year = c(
+    2026,
+    2026,
+    2024, 
+    2024, 
+    2024
+  ),
+  journal = c(
+    "EcoEvoRxiv",
+    "Infectious Disease Modelling",
+    "PhD thesis",
+    "médecine/sciences", 
+    "Ecological Modelling"
+  ),
+  supp = c(
+    NA,
+    "vol. 11, n°2, pp. 389-406",
+    NA,
+    "vol. 40, n°2, pp. 161-166",
+    "vol. 487, pp. 110569"
+  ),
+  link = c(
+    "https://doi.org/10.32942/X2X683",
+    "https://doi.org/10.1016/j.idm.2025.09.007",
+    "https://hal.science/tel-04918453v1",
+    "https://doi.org/10.1051/medsci/2023219", 
+    "https://doi.org/10.1051/medsci/2023219"
+  ),
+  isopen = c(
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE,
+    TRUE
+  )
+)
 
 for (i in 1:nrow(data)) {
   cat(paste0(ifelse(isTRUE(data$isopen[i]), "{{< ai open-access color=#f6830a >}} &nbsp; ", ""), data$title[i]), "\n\n")
